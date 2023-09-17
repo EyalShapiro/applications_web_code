@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.2;
+    background-color: #000000;
+    color: hsl(0, 0%, 100%);
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(12, 126, 219);
+    border-bottom-style: dotted;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: DodgerBlue;
+}
+
+
+/* צורת מסוימת */
+/* ul {
+    list-style: square;
+}*/
+
+ul {
+    list-style: none;
+    color: rgba(181, 196, 245, 0.795);
+    /*צורת */
+}
+
+ul li::before {
+    content: "$- ";
+}
