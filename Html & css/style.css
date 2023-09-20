@@ -1,35 +1,45 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.2;
-    background-color: #000000;
-    color: hsl(0, 0%, 100%);
-}
-#Jerusalem{
-    /* style="width:128px;height:128px;align-items: right: ;;" */
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: rgb(12, 126, 219);
-    border-bottom-style: dotted;
-    /* תמונה */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('Jerusalem.jpg');
-}
 html {
-  font-size: 1em;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    background-color: #000000dc;
+    color: white;
+
+    line-height: 1.2;
 }
 
+
+#Jerusalem{
+    /* תמונה */
+    display: revert;
+    
+    grid-auto-flow: column;
+    background-image: url('img/Jerusalem.jpg');
+    background-repeat: no-repeat;
+    background-size : contain;
+
+}
+
+
+div{/* יצוב הכותרת הרשאית  */
+    text-align: center;
+    color: gold;
+    font-size: 140%;
+}
+a{/* המיקום של קישור של מספר טלפון */
+    color: skyblue
+}
 h1 {
     text-align: center;
-    font-size: 30px;
+      display: flex;
+    font-size: 180%;
     font-weight: bold;
     color: rgb(12, 126, 219);
     border-bottom-style: dotted;
+
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 120%;
     font-weight: bold;
     color: DodgerBlue;
 }
@@ -38,14 +48,24 @@ h2 {
 /* צורת מסוימת */
 /* ul {
     list-style: square;
-}*/
+} */
 
-ul {
+ul  {
     list-style: none;
-    color: rgba(181, 196, 245, 0.795);
+    display: grid;
+
+    grid-template-columns: auto ;
+
     /*צורת */
 }
-
+ul.skill{
+    /* כישורים רווחים נוספים בגלל התמונות */
+        line-height: 120%;
+}
 ul li::before {
-    content: "$- ";
+    content: "\1F448";/* 👉*/
+}
+img {
+  width: 10% auto;
+  height: auto;
 }
