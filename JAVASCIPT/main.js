@@ -7,7 +7,15 @@ window.addEventListener('load', () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const task = input.value;
-    const task_el = document.createElement('div');
+    const task_el = document.createElement('div');  // יצירת אלמנט המשימה
+    if (window.innerWidth < 481) {
+        // שינוי סגנון למשימה במסך קטן
+        task_el.style.fontSize = '14px';
+
+      } else {
+        // שינוי סגנון למשימה במסך גדול 
+        task_el.style.fontSize = '16px';
+      }
     task_el.classList.add('task');
 
     const task_content_el = document.createElement('div');

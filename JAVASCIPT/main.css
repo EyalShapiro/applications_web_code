@@ -52,15 +52,15 @@ body {
   width: 20%;
   position: absolute;
   top: 20px;
-  left: 10px;
+  left: 5px;
   padding: 5px;
   border-radius: 1px;
   background-color: lightblue;
 }
 
 #searchbar.active {
-  width: 100%;
-  left: 0;
+  width: 25% ;
+  left: 5;
 }
 
 /* סגנון לכפתור חיפוש */
@@ -220,8 +220,7 @@ main {
 .completed {
   background-color: var(--lightgreen); /* צבע רקע של משימות שבוצעו */
 }
-/* סגנון לסימן הסיום */
-.complete-sign::before {
+.complete-sign::before {/* סגנון לסימן הסיום */
   content: "\2610"; /* סימון "☐" באמצעות תו יחיד מיוחד */
   font-size: 20px; /* גודל התו */
   position: relative;
@@ -252,22 +251,37 @@ main {
 .complete-sign.checked {
   color: var(--lightgreen); /* צבע התו של משימות שבוצעו */
 }
-@media (max-width: 480px) {/* תצוגת העמוד במסכים קטנים (רוחב מרבי 480px) */
+/* סגנונות כלליים */
+
+@media (max-width: 480px) {
   html {
-    font-size: 75%; /* גודל הטקסט במסכים קטנים */
-    float: none;
-    width: 100%;
+    font-size: 80%;
+  }
+  
+  /* #searchbar {
+    width: 80%;
+    font-size: 80%; 
+  } */
+  
+  .task .content .text {
+    font-size: 14px;
+  }
+  
+}
+
+@media (min-width: 481px) {
+
+  html {
+    font-size: 100%;
+  }
+  
+  #searchbar {
+    width: 20%;
+    font-size: 100%; 
   }
 
-}
-
-@media (min-width: 480px) and (max-width: 768px) {/* תצוגת העמוד במסכים בינוניים (רוחב בין 481px ל-768px) */
-  html {
-    font-size: 85%; /* גודל הטקסט במסכים בינוניים */
-}
-}
-
-@media (min-width: 769px) {/* תצוגת העמוד במסכים גדולים (רוחב מינימלי 769px) */
-  html {
-    font-size: 100%; /* גודל הטקסט במסכים גדולים */}
+  .task .content .text {
+    font-size: 16px;
+  }
+  
 }
