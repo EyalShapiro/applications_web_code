@@ -1,4 +1,3 @@
-/* main.css */
 :root {
   --dark: #374151;
   --darker: #1F2937;
@@ -31,6 +30,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .shadow {
   text-shadow: #44a058 2px 2px 0.2rem;
   margin: 8px;
@@ -47,8 +47,8 @@ body {
   background-color: var(--dark);
 }
 
-/* סגנון לשדה חיפוש משימות */
 #searchbar {
+  /* סגנון לשדה חיפוש משימות */
   width: 20%;
   position: absolute;
   top: 20px;
@@ -59,12 +59,12 @@ body {
 }
 
 #searchbar.active {
-  width: 25% ;
+  width: 25%;
   left: 5;
 }
 
-/* סגנון לכפתור חיפוש */
 #search-btn {
+  /* סגנון לכפתור חיפוש */
   position: absolute;
   color: var(--darkest);
   top: 50px;
@@ -84,8 +84,8 @@ body {
   opacity: 5.0;
 }
 
-/* סגנון לשדה הטקסט של המשימות */
 input[type=text] {
+  /* סגנון לשדה הטקסט של המשימות */
   width: 30%;
   -webkit-transition: width 0.15s ease-in-out;
   transition: width 0.15s ease-in-out;
@@ -95,8 +95,8 @@ input[type=text]:focus {
   width: 40%;
 }
 
-/* סגנון לכפתור "הוסף משימה" */
 #btn {
+  /* סגנון לכפתור "הוסף משימה" */
   color: var(--lightgreen);
   font-size: 1rem;
   font-weight: 700;
@@ -105,8 +105,8 @@ input[type=text]:focus {
   background-color: var(--null);
 }
 
-/* סגנון לשדה הטקסט של המשימה החדשה */
 #new-task-input {
+  /* סגנון לשדה הטקסט של המשימה החדשה */
   display: flex;
   flex: 1 30%;
   background-color: var(--darker);
@@ -118,7 +118,7 @@ input[type=text]:focus {
 }
 
 #new-task-input::placeholder {
-  font-size: 80% ;
+  font-size: 80%;
   color: var(--grey);
 }
 
@@ -166,7 +166,8 @@ main {
 
 .task .content .text {
   color: var(--light);
-  background-color: var(--null); /* רק של מישימות רק */
+  background-color: var(--null);
+  /* רק של מישימות רק */
   font-size: 1.125rem;
   width: 100%;
   display: block;
@@ -208,7 +209,7 @@ main {
 }
 
 .task .actions .delete {
-  background-image: linear-gradient(to right,red, var(--orange));
+  background-image: linear-gradient(to right, red, var(--orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--null);
 }
@@ -218,11 +219,16 @@ main {
 }
 
 .completed {
-  background-color: var(--lightgreen); /* צבע רקע של משימות שבוצעו */
+  background-color: var(--lightgreen);
+  /* צבע רקע של משימות שבוצעו */
 }
-.complete-sign::before {/* סגנון לסימן הסיום */
-  content: "\2610"; /* סימון "☐" באמצעות תו יחיד מיוחד */
-  font-size: 20px; /* גודל התו */
+
+.complete-sign::before {
+  /* סגנון לסימן הסיום */
+  content: "\2610";
+  /* סימון "☐" באמצעות תו יחיד מיוחד */
+  font-size: 20px;
+  /* גודל התו */
   position: relative;
   top: 3px;
   left: 1px;
@@ -232,41 +238,47 @@ main {
 .complete-sign {
   color: var(--lightgreen);
   margin-right: 5px;
-  cursor: pointer; /* הפוך את הסמל לידידותי לגולש */
+  cursor: pointer;
+  /* הפוך את הסמל לידידותי לגולש */
 }
 
 .complete-sign.checked::before {
-  content: "\2713"; /* סימון "✔" באמצעות תו יחיד מיוחד */
-  font-size: 20px; /* גודל התו */
+  content: "\2713";
+  /* סימון "✔" באמצעות תו יחיד מיוחד */
+  font-size: 20px;
+  /* גודל התו */
   position: relative;
   top: 3px;
   left: 1px;
   color: var(--lightgreen);
 }
+
 .green-text {
-  color: lightgreen; 
+  color: lightgreen;
 }
 
 
 .complete-sign.checked {
-  color: var(--lightgreen); /* צבע התו של משימות שבוצעו */
+  color: var(--lightgreen);
+  /* צבע התו של משימות שבוצעו */
 }
+
 /* סגנונות כלליים */
 
 @media (max-width: 480px) {
   html {
     font-size: 80%;
   }
-  
+
   /* #searchbar {
     width: 80%;
     font-size: 80%; 
   } */
-  
+
   .task .content .text {
     font-size: 14px;
   }
-  
+
 }
 
 @media (min-width: 481px) {
@@ -274,14 +286,14 @@ main {
   html {
     font-size: 100%;
   }
-  
+
   #searchbar {
     width: 20%;
-    font-size: 100%; 
+    font-size: 100%;
   }
 
   .task .content .text {
     font-size: 16px;
   }
-  
+
 }

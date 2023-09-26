@@ -7,15 +7,15 @@ window.addEventListener('load', () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const task = input.value;
-    const task_el = document.createElement('div');  // יצירת אלמנט המשימה
+    const task_el = document.createElement('div'); // יצירת אלמנט המשימה
     if (window.innerWidth < 481) {
-        // שינוי סגנון למשימה במסך קטן
-        task_el.style.fontSize = '14px';
+      // שינוי סגנון למשימה במסך קטן
+      task_el.style.fontSize = '14px';
 
-      } else {
-        // שינוי סגנון למשימה במסך גדול 
-        task_el.style.fontSize = '16px';
-      }
+    } else {
+      // שינוי סגנון למשימה במסך גדול 
+      task_el.style.fontSize = '16px';
+    }
     task_el.classList.add('task');
 
     const task_content_el = document.createElement('div');
@@ -42,7 +42,7 @@ window.addEventListener('load', () => {
 
     const task_delete_el = document.createElement('button');
     task_delete_el.classList.add('delete');
-    task_delete_el.innerText =  String.fromCodePoint("215");//סימון של "X"
+    task_delete_el.innerText = String.fromCodePoint("215"); //סימון של "X"
 
     task_actions_el.appendChild(task_edit_el);
     task_actions_el.appendChild(task_delete_el);
@@ -90,7 +90,7 @@ window.addEventListener('load', () => {
           isCompleted = true;
         } else {
           task_complete_el.classList.remove('checked');
-          task_input_el.style.color = 'white';// החזר צבע טקסט משימה ללבן
+          task_input_el.style.color = 'white'; // החזר צבע טקסט משימה ללבן
           task_el.classList.remove('completed');
           isCompleted = false;
         }
