@@ -252,3 +252,22 @@ main {
 .complete-sign.checked {
   color: var(--lightgreen); /* צבע התו של משימות שבוצעו */
 }
+@media (max-width: 480px) {/* תצוגת העמוד במסכים קטנים (רוחב מרבי 480px) */
+  html {
+    font-size: 75%; /* גודל הטקסט במסכים קטנים */
+    float: none;
+    width: 100%;
+  }
+
+}
+
+@media (min-width: 480px) and (max-width: 768px) {/* תצוגת העמוד במסכים בינוניים (רוחב בין 481px ל-768px) */
+  html {
+    font-size: 85%; /* גודל הטקסט במסכים בינוניים */
+}
+}
+
+@media (min-width: 769px) {/* תצוגת העמוד במסכים גדולים (רוחב מינימלי 769px) */
+  html {
+    font-size: 100%; /* גודל הטקסט במסכים גדולים */}
+}
