@@ -1,4 +1,6 @@
+/* יש זבל למטה בעמוד  */
 :root {
+  --null: transparent;
   --dark: #374151;
   --darker: #1F2937;
   --darkest: #111827;
@@ -7,10 +9,12 @@
   --light: #EEE;
   --lightgreen: #00c78a;
   --orange: #ff9c27;
-  --gold: #ffd900bd;
-  --null: transparent;
+  --gold: goldenrod;
   --cadetblue: cadetblue;
-  --red_orng: rgb(153, 100, 65);
+  --red_orn: orangered;
+  --lbule: lightblue;
+  --green: #1cb01c;
+  --navy: navy
 }
 
 * {
@@ -19,16 +23,16 @@
   font-family: "Fira Sans", sans-serif;
 }
 
-.jerusalem {
+.TitleJerusalem {
   padding: 10px;
   height: 150px;
-  color: gold;
+  color: var(--gold);
   text-align: center;
-  background-image: url('Jerusalem.jpg');
+  background-image: url("img/Jerusalem.jpg");
   background-size: contain;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 }
 
 .shadow {
@@ -38,50 +42,85 @@
   height: auto;
 }
 
+<<<<<<< Updated upstream:JAVASCIPT/main.css
+=======
+html {
+  color: var(--navy);
+}
+
+>>>>>>> Stashed changes:JAVASCIPT/styles/s.css
 body {
   direction: rtl;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+<<<<<<< Updated upstream:JAVASCIPT/main.css
   color: #FFF;
+=======
+  color: var(--green);
+>>>>>>> Stashed changes:JAVASCIPT/styles/s.css
   background-color: var(--dark);
 }
 
-#searchbar {
-  /* סגנון לשדה חיפוש משימות */
+.search-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+/* סגנון לשדה חיפוש משימות */
+#search-bar {
   width: 20%;
-  position: absolute;
   top: 20px;
   left: 5px;
   padding: 5px;
+
   border-radius: 1px;
-  background-color: lightblue;
+  background-color: var(--lbule);
 }
 
+<<<<<<< Updated upstream:JAVASCIPT/main.css
 #searchbar.active {
+=======
+#search-bar.active {
+  /*מרחיב את בר חי */
+>>>>>>> Stashed changes:JAVASCIPT/styles/s.css
   width: 25%;
-  left: 5;
+  left: 5%;
 }
 
 #search-btn {
   /* סגנון לכפתור חיפוש */
-  position: absolute;
   color: var(--darkest);
-  top: 50px;
-  left: 100px;
   background-color: var(--null);
-  border: none;
+  border: 2px solid var(--grey);
   border-radius: 5px;
-  padding: 8px;
   cursor: pointer;
+  /* סימן בעכבר משתנה */
 }
 
+/*https: //www.w3schools.com/cssref/tryit.php?filename=trycss3_opacity 
 #search-btn:hover {
   opacity: 3.5;
 }
-
+ 
 #search-btn:active {
   opacity: 5.0;
+} */
+
+/* סגנון לכפתור "נקה משימות" */
+#clear-tasks-btn {
+  background-color: var(--red_orn);
+  color: var(--light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  /* סימן בעכבר משתנה */
+  text-shadow: var(--lightblue) 2px 2px 0.2rem;
+  width: auto;
+  height: auto;
 }
 
 input[type=text] {
@@ -101,9 +140,11 @@ input[type=text]:focus {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
+  /* סימן בעכבר משתנה */
   transition: 0.4s;
   background-color: var(--null);
 }
+
 
 #new-task-input {
   /* סגנון לשדה הטקסט של המשימה החדשה */
@@ -111,7 +152,7 @@ input[type=text]:focus {
   flex: 1 30%;
   background-color: var(--darker);
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 10px;
   margin-right: 1rem;
   color: var(--light);
   font-size: 1.25rem;
@@ -122,25 +163,8 @@ input[type=text]:focus {
   color: var(--grey);
 }
 
-/* סגנון לכפתור "נקה משימות" */
-#clear-tasks-btn {
-  background-color: crimson;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  position: absolute;
-  top: 90px;
-  right: 50px;
-  z-index: 1;
-  text-shadow: var(--lightblue) 2px 2px 0.2rem;
-  margin: 10px;
-  width: auto;
-  height: auto;
-}
-
 main {
+  /* השדה בוא מוסיפים את משימות */
   flex: 1 1 0%;
   max-width: 800px;
   width: 100%;
@@ -187,6 +211,7 @@ main {
 
 .task .actions button {
   cursor: pointer;
+  /* סימן בעכבר משתנה */
   margin: 0 0.5rem;
   font-size: 1.125rem;
   font-weight: 700;
@@ -214,9 +239,6 @@ main {
   -webkit-text-fill-color: var(--null);
 }
 
-.red-border {
-  border: 2px solid red;
-}
 
 .completed {
   background-color: var(--lightgreen);
@@ -232,13 +254,14 @@ main {
   position: relative;
   top: 3px;
   left: 1px;
-  color: var(--red_orng);
+  color: var(--red_orn);
 }
 
 .complete-sign {
   color: var(--lightgreen);
   margin-right: 5px;
   cursor: pointer;
+  /* סימן בעכבר משתנה */
   /* הפוך את הסמל לידידותי לגולש */
 }
 
@@ -251,10 +274,6 @@ main {
   top: 3px;
   left: 1px;
   color: var(--lightgreen);
-}
-
-.green-text {
-  color: lightgreen;
 }
 
 
@@ -270,10 +289,10 @@ main {
     font-size: 80%;
   }
 
-  /* #searchbar {
+  #search-bar {
     width: 80%;
     font-size: 80%; 
-  } */
+  }
 
   .task .content .text {
     font-size: 14px;
@@ -287,7 +306,7 @@ main {
     font-size: 100%;
   }
 
-  #searchbar {
+  #search-bar {
     width: 20%;
     font-size: 100%;
   }
