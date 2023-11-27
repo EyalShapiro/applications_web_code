@@ -1,10 +1,20 @@
-window.addEventListener('load', () => {
-  const form = document.querySelector("#new-task-form");
-  const input = document.querySelector("#new-task-input");
-  const list_el = document.querySelector("#tasks");
-  const searchbar = document.querySelector("#searchbar");
 
-  form.addEventListener('submit', (e) => {
+window.addEventListener('load', () => {
+ // קבלת האלמנטים הנדרשים לפונקציונליות התוכנה
+ const form = document.querySelector("#new-task-form");
+ const input = document.querySelector("#new-task-input");
+ const list_el = document.querySelector("#tasks");
+ const searchbar = document.querySelector("#searchbar");
+
+ // אזהרת מחיקת כל המשימות
+ const clear_btn = document.getElementById('clear-tasks-btn');
+ clear_btn.addEventListener('click', () => {
+    const list_el = document.querySelector("#tasks");
+    list_el.innerHTML = '';
+ });
+
+ // אירוע של הגשת הטופס להוספת משימה חדשה
+ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const task = input.value;
     const task_el = document.createElement('div'); // יצירת אלמנט המשימה
@@ -18,6 +28,7 @@ window.addEventListener('load', () => {
     }
     task_el.classList.add('task');
 
+    // יצירת אלמנטים נוספים למשימה
     const task_content_el = document.createElement('div');
     task_content_el.classList.add('content');
     task_el.appendChild(task_content_el);
@@ -52,6 +63,7 @@ window.addEventListener('load', () => {
 
     let isCompleted = false; // משתנה לציון האם המשימה בוצעה
 
+    // אירועים ללחיצה על כפתורי המשימה
     task_complete_el.addEventListener('click', () => {
       if (!isCompleted) {
         task_complete_el.classList.add('checked');
@@ -96,36 +108,37 @@ window.addEventListener('load', () => {
         }
       }
     });
-  });
+ });
 
-  searchbar.addEventListener('focus', () => {
+ // אירוע של התמונה לחיצה על שדה החיפוש
+ searchbar.addEventListener('focus', () => {
     searchbar.classList.add('active');
-  });
+ });
 
-  searchbar.addEventListener('blur', () => {
+ searchbar.addEventListener('blur', () => {
     searchbar.classList.remove('active');
-  });
-});
+ });
 
-function search() {
-  const searchTerm = document.getElementById('searchbar').value.trim().toLowerCase();
-  const tasks = document.querySelectorAll('.text');
-  tasks.forEach((taskInput) => {
+ // פונקציה לחיפוש משימות בפילטר של השדה החיפוש
+ function search() {
+    const searchTerm = document.getElementById('searchbar').value.trim().toLowerCase();
+    const tasks = document.querySelectorAll('.text');
+    tasks.forEach((taskInput) => {
 
-    const taskText = taskInput.value.trim().toLowerCase();
-    const taskContainer = taskInput.closest('.task');
+      const taskText = taskInput.value.trim().toLowerCase();
+      const taskContainer = taskInput.closest('.task');
 
-    if (taskText.includes(searchTerm)) {
-      taskContainer.classList.add('red-border');
-    } else {
-      taskContainer.classList.remove('red-border');
-    }
-  });
-}
+      if (taskText.includes(searchTerm)) {
+        taskContainer.classList.add('red-border');
+      } else {
+        taskContainer.classList.remove('red-border');
+      }
+    });
+ }
 
-const clearBtn = document.getElementById('clear-tasks-btn');
-
-clearBtn.addEventListener('click', () => {
-  const list_el = document.querySelector("#tasks");
-  list_el.innerHTML = '';
+ // אירוע של לחיצה על כפתור חיפוש
+ const searchBtn = document.getElementById('search-tasks-btn');
+ searchBtn.addEventListener('click', () => {
+    search();
+ });
 });

@@ -3,22 +3,14 @@ const form = document.querySelector("#new-task-form");
 const input = document.querySelector("#new-task-input");
 const list_el = document.querySelector("#tasks");
 const search_bar = document.querySelector("#search-bar");
-main();
-document.getElementById("search-bar").onclick = Search;
-// Function to handle the search bar focus and blur events
-search_bar.addEventListener("focus", () => {
-  search_bar.classList.add("active");
-});
+window.onload = main;
 
-search_bar.addEventListener("blur", () => {
-  search_bar.classList.remove("active");
-});
 
 function main() {
-  // Function to handle the clear tasks button click event
-  const clearBtn = document.getElementById("clear-tasks-btn");
+
   // Function to handle the form submission and create a new task
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => { //Event 		<input type="submit" id="btn" value="הוסף משימה" />
+    /* Prevent the form from submitting*/
     e.preventDefault();
     const task = input.value;
     const task_elem = document.createElement("div"); // יצירת אלמנט המשימה
@@ -48,6 +40,7 @@ function main() {
     task_actions_el.appendChild(task_complete_el);
     const task_edit_el = BtnEdit(); //מגדיר כדי שיהיה
     const delete_task = BtnDelete(); //מגדיר כדי שיהיה
+    //child;
     task_actions_el.appendChild(task_edit_el);
     task_actions_el.appendChild(delete_task);
     task_elem.appendChild(task_actions_el);
@@ -78,8 +71,14 @@ function main() {
       }
     });
 
+    function Remove_Task(elem) {
+      /**Removes a task from the list.
+       * @param {Element} elem - The element to be removed from the list.
+       */
+      list_el.removeChild(elem);
+    }
     delete_task.addEventListener("click", () => {
-      list_el.removeChild(task_elem);
+      Remove_Task(task_elem);
     });
 
     task_input_el.addEventListener("click", () => {
@@ -99,29 +98,47 @@ function main() {
     });
   });
 
-  clearBtn.addEventListener("click", () => {
-    const list_el = document.querySelector("#tasks");
-    list_el.innerHTML = "";
+  // Function to handle the clear tasks button click event
+  const clear_btn = document.getElementById("clear-tasks-btn");
+  clear_btn.addEventListener("click", () => {
+
+      const elem_arr = document.querySelectorAll("#tasks");
+    elem_arr.forEach(item)
+    {
+      Remove_Task(item);
+    }
+    // list_el.innerHTML = "";
+
   });
 }
 
+
+document.querySelector('#search-btn').addEventListener("click", Search_Task)
 // Function to handle the Search functionality
-function Search() {
-  console.info('start Search func');
-  const searchTerm = search_bar.value.trim().toLowerCase();
-  const tasks = document.querySelectorAll(".text");
-  tasks.forEach((item) => {
-    const taskText = item.value.trim().toLowerCase();
-    const taskContainer = item.closest(".task");
+
+function Search_Task() {
+  const searchTerm = document.getElementById('searchbar').value.trim().toLowerCase();
+  const tasks = document.querySelectorAll('.text');
+  tasks.forEach((taskInput) => {
+
+    const taskText = taskInput.value.trim().toLowerCase();
+    const taskContainer = taskInput.closest('.task');
 
     if (taskText.includes(searchTerm)) {
-      taskContainer.style.borderColor = 'red';
+      taskContainer.classList.add('red-border');
     } else {
-      taskContainer.classList.remove();
+      taskContainer.classList.remove('red-border');
     }
   });
 }
+// Function to handle the search bar focus and blur events
+search_bar.addEventListener("focus", () => {
+  search_bar.classList.add("active");
+});
 
+search_bar.addEventListener("blur", () => {
+  search_bar.classList.remove("active");
+});
 
 // Function to create an edit button for each task
 function BtnEdit() {
@@ -135,7 +152,7 @@ function BtnEdit() {
 // Function to create a delete button for each task
 function BtnDelete() {
   console.info('start BtDelete func');
-  const delete_task = document.createElement("button"); // מוחק משימה
+  const delete_task = document.createElement("button"); // מוסיף את כפתור מוחק משימה 
   delete_task.classList.add("delete");
   delete_task.innerText = String.fromCodePoint("215"); // סימון של "X"
   return delete_task

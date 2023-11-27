@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="he">
 
@@ -12,24 +14,18 @@
 <body dir="auto">
 	<header class="TitleJerusalem">
 		<h1 class="shadow">רשימת משימות שלי</h1>
-		<!-- שדה חיפוש משימות -->
 		<div class="search-top">
 			<input id="search-bar" type="text" name="search" placeholder="חיפוש משימות...">
-			<!-- כפתור חיפוש -->
 			<button id="search-btn">🔍חפש</button>
 		</div>
 	</header>
-	<!-- טופס להוספת משימה חדשה -->
 	<form id="new-task-form">
 		<input type="text" name="new-task-input" id="new-task-input" placeholder="הוסף כותרת למשימה החדשה" />
 		<input type="submit" id="btn" value="הוסף משימה" />
-		<!-- כפתור לניקוי רשימת המשימות -->
-		<button id="clear-tasks-btn">נקה משימות</button>
-
+		<button id="clear-tasks-btn" type="clear">נקה משימות</button>
 	</form>
 	<main>
 		<section class="task-list">
-			<!-- רשימת המשימות -->
 			<div id="tasks"></div>
 		</section>
 	</main>
