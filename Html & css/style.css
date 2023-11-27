@@ -31,6 +31,7 @@ a {/* סגנון עבור קישורים (אלמנט a) */
 
 h1 {/* סגנון עבור כותרת h1 */
     text-align: center; /* מרכוז טקסט במרכז הכותרת */
+    display: flex; /* תצוגה כמו Flex */
     font-size: 180%; /* גודל הטקסט */
     font-weight: bold; /* הדגשת טקסט מופחת */
     color: darkcyan;
