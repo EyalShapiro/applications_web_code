@@ -1,10 +1,10 @@
 
 window.addEventListener('load', () => {
  // קבלת האלמנטים הנדרשים לפונקציונליות התוכנה
- const form = document.querySelector("#new-task-form");
- const input = document.querySelector("#new-task-input");
- const list_el = document.querySelector("#tasks");
- const searchbar = document.querySelector("#searchbar");
+ var form = document.querySelector("#new-task-form");
+ var input = document.querySelector("#new-task-input");
+ var list_el = document.querySelector("#tasks");
+ var searchbar = document.querySelector("#searchbar");
 
  // אזהרת מחיקת כל המשימות
  const clear_btn = document.getElementById('clear-tasks-btn');
