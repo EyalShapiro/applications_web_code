@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול משימות</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+    <header class="jerusalem">
+        <h1 class="shadow">רשימת משימות שלי</h1>
+        <!-- שדה חיפוש משימות -->
+        <input id="searchbar" type="text" name="search" placeholder="חיפוש משימות...">
+        <!-- כפתור חיפוש -->
+        <button id="search-btn" onclick="search()">🔍חפש</button>
+    </header>
+    <!-- טופס להוספת משימה חדשה -->
+    <form id="new-task-form">
+        <input type="text" name="new-task-input" id="new-task-input" placeholder="הוסף כותרת למשימה החדשה" />
+        <input type="submit" id="btn" value="הוסף משימה" />
+    </form>
+    <!-- כפתור לניקוי רשימת המשימות -->
+    <button id="clear-tasks-btn">נקה משימות</button>
+    <main>
+        <section class="task-list">
+            <!-- רשימת המשימות -->
+            <div id="tasks"></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
