@@ -1,8 +1,8 @@
+/* anima.css */
 button:active,
 img:hover {
-    animation: flicker-out 2s linear both;
+    animation: flicker-out 1.8s linear both;
 }
-
 
 @-webkit-keyframes flicker-out {
     0% {

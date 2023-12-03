@@ -8,11 +8,15 @@
         font-size: 14px;
     }
 
-    #search-bar{
+    #search-bar {
         width: 50%;
         font-size: 15px;
     }
-    #search-btn{width: 20;font-size: small;}
+
+    #search-btn {
+        width: 20;
+        font-size: small;
+    }
 }
 
 @media (min-width: 481px) {
