@@ -71,7 +71,7 @@ function Add_Task(task_text) {
       Remove_Task(task_elem);
     });
     const event_commit = function EventCommit() {
-      toggleTaskColor(task_elem, task_complete, task_input);
+      Toggle_Task_Color(task_elem, task_complete, task_input);
     };
     task_input.addEventListener("click", event_commit);
     task_complete.addEventListener("click", event_commit);
@@ -143,7 +143,7 @@ function Edit_Task(edit_el, input_el) {
   }
 }
 
-function toggleTaskColor(elem, complete_el, input_el) {
+function Toggle_Task_Color(elem, complete_el, input_el) {
   console.log(is_completed)
   if (!is_completed) {
     complete_el.classList.add("checked");
