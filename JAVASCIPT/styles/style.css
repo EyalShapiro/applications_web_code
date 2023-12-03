@@ -1,4 +1,7 @@
 /* style.css */
+@import 'anima.css';
+
+
 :root {
   --null: transparent;
   --dark: #374151;
@@ -8,19 +11,19 @@
   --pink: #EC4899;
   --light: #EEE;
   --lightgreen: #00c78a;
-  --orange: #ff9c27;
+  --orange: #ff9e27d5;
   --gold: goldenrod;
   --red_orn: orangered;
   --green: #1cb01c;
   --navy: #08087e;
-  --background_green: #1cb01ca0;
-  --rainbow: linear-gradient(red, orange, yellow, green, blue, indigo, violet);
+  --background_green: #35ad35bd;
+  --rainbow: linear- gradient(red, orange, yellow, green, blue, indigo, violet);
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Fira Sans", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .TitleJerusalem {
@@ -36,12 +39,15 @@
 
 }
 
+img {
+  max-inline-size: 20px;
+  display: block;
+}
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 50%;
-  color: var(--green);
   background-color: var(--dark);
 }
 
@@ -57,19 +63,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-/* סגנון לשדה חיפוש משימות */
-#search-bar {
-  width: 20%;
-  top: 20px;
-  left: 5px;
-  padding: 5px;
-  border-radius: 1px;
   color: var(--navy);
-  background-color: var(--background_green);
 }
 
+#search-bar {
+  /* סגנון לשדה חיפוש משימות */
+  text-align: center;
+  padding: 6px;
+  border-radius: 3px;
+  background-color: #ffe4c4b4;
+  font: larger;
+  font-size: x-large;
+}
+
+#search-bar:focus {
+  /* לפני כתיבה */
+  background-color: rgba(220, 220, 220, 0.77);
+}
 
 
 #search-btn {
@@ -78,36 +88,37 @@ body {
   background-color: var(--null);
   /* background-image: linear-gradient(rgba(0, 199, 138, 0.75) 4%, rgba(136, 201, 223, 0.75) 14%, rgba(238, 238, 238, 0.04) 50%, rgba(105, 219, 124, 0.75) 92%, rgba(8, 8, 126, 0.5) 97%); */
   background-image: linear-gradient(0deg, #4baee396 100%, #000000 100%);
-  border: 2px solid var(--grey);
+  border: 2px solid var(--navy);
   font: bolder sans-serif;
   border-radius: 5px;
   cursor: pointer;
   /* סימן בעכבר משתנה */
+
+  box-shadow: 0 3px var(--navy);
 }
 
 .red-border {
   /*נקרא בJS 
     מאוד חשוב לחיפוש */
-  border: 2px solid red;
+  border: 2px ridge red;
+  border-bottom: 2.2px ridge var(--orange);
+  font-size: 120%;
 }
 
 
 input[type=text] {
   /* סגנון לשדה הטקסט של המשימות */
-  width: 80%;
-  -webkit-transition: width 0.15s ease-in-out;
+  width: 60%;
   transition: width 0.15s ease-in-out;
 }
 
-input[type=text]:focus + input[type=text]:hover {
-  width: 40%;
-  left: 10%;
-
+input[type="text"]:focus,
+input[type="text"]:hover {
+  width: 70%;
 }
 
 #btn-add {
   /* סגנון לכפתור "הוסף משימה" */
-
   color: var(--lightgreen);
   font-size: 1rem;
   font-weight: 700;
@@ -115,9 +126,14 @@ input[type=text]:focus + input[type=text]:hover {
   /* סימן בעכבר משתנה */
   transition: 0.4s;
   background-color: var(--null);
+  border: var(--lightgreen) ridge 1px;
+  box-shadow: 2.5px 2.5px var(--background_green);
 }
 
 #clear-tasks-btn {
+  /* מוריד את שני כפתורים למטה */
+  margin-top: 0.5rem;
+  border: var(--orange) ridge 1px;
   color: var(--orange);
   font-size: 1rem;
   /* סגנון לכפתור "נקה משימות" */
@@ -126,6 +142,11 @@ input[type=text]:focus + input[type=text]:hover {
   /* סימן בעכבר משתנה */
   transition: 0.4s;
   background-color: var(--null);
+  box-shadow: 2.5px 2.5px #ff5e00be
+}
+
+#new-task-form {
+  margin-right: 1rem;
 }
 
 #new-task-input {
@@ -135,14 +156,17 @@ input[type=text]:focus + input[type=text]:hover {
   background-color: var(--darker);
   padding: 1rem;
   border-radius: 10px;
-  margin-right: 1rem;
-  color: var(--light);
+  border: 2px;
+  color: var(--lightgreen);
   font-size: 1.25rem;
+
 }
 
 #new-task-input::placeholder {
   /* לפני כתיבה */
   font-size: 80%;
+  color: var(--grey);
+
 }
 
 
@@ -200,15 +224,9 @@ main {
   font-weight: 700;
   text-transform: uppercase;
   transition: 0.4s;
+
 }
 
-.task .actions button:hover {
-  opacity: 0.8;
-}
-
-.task .actions button:active {
-  opacity: 0.6;
-}
 
 .task .actions .edit {
   background-image: linear-gradient(to right, var(--pink), var(--orange));
@@ -224,7 +242,7 @@ main {
 
 .completed {
   background-color: var(--lightgreen);
-  /* צבע רקע של משימות שבוצעו */
+  /* צבע טקסט של משימות שבוצעו */
 }
 
 .complete-sign::before {
@@ -257,9 +275,3 @@ main {
   left: 1px;
   color: var(--lightgreen);
 }
-
-/* צבע התו של משימות שבוצעו */
-/* .complete-sign.checked {
-    color: var(--lightgreen);
-  <<<<<<< Updated upstream
-  } לא צריך*/

@@ -1,8 +1,13 @@
 // Selecting the necessary elements from the DOM
 var form = document.querySelector("#new-task-form");
 var input = document.querySelector("#new-task-input");
-var list_el = document.querySelector("#tasks");
-var search_bar = document.querySelector("#search-bar");
+let list_el = document.querySelector("#tasks");
+let search_bar = document.querySelector("#search-bar");
+const clear_btn = document.querySelector("#clear-tasks-btn");
+
+let is_completed = false;
+
+
 let submit_btn = document.querySelector("#btn-add");
 window.onload = main;
 
@@ -10,25 +15,36 @@ function main() {
   // Function to handle the form submission and create a new task
   submit_btn.addEventListener('click', (e) => {
     e.preventDefault();
-    addTask();
+    const task = input.value;
+    search_bar.style.color = '#000'
+    if (task.trim() != '' && task != undefined) {
+      Add_Task(task);
+    }
+    else {
+
+      input.placeholder = " -אנא הכנס משימה חוקית";
+      setTimeout(() => {
+        input.placeholder = `הוסף כותרת למשימה החדשה`;
+      }, 1000 * 15)//1000MS*15MS=15שניות
+    }
+
   });
 
   // Function to handle the clear tasks button click event
-  const clear_btn = document.getElementById("clear-tasks-btn");
   clear_btn.addEventListener("click", () => {
     const elem_arr = document.querySelectorAll(".task");
     elem_arr.forEach(function (i) {
-      removeTask(i);
+      Remove_Task(i);
     });
   });
 
   // Event listener for real-time search
-  search_bar.addEventListener("input", SearchTasks);
+  search_bar.addEventListener("input", Search_Tasks);
 }
 
-function addTask() {
-  const task = input.value;
+function Add_Task(task_text) {
   const task_elem = document.createElement("div");
+
   if (window.innerWidth < 481) {
     task_elem.style.fontSize = "14px";
   } else {
@@ -36,49 +52,64 @@ function addTask() {
   }
   task_elem.classList.add("task");
 
-  const task_content_el = document.createElement("div");
-  task_content_el.classList.add("content");
-  task_elem.appendChild(task_content_el);
 
-  const task_input_el = document.createElement("input");
-  task_input_el.classList.add("text");
-  task_input_el.type = "text";
-  task_input_el.value = task;
-  task_input_el.setAttribute("readonly", "readonly");
-  task_content_el.appendChild(task_input_el);
+  input.value = "";//??
 
-  const task_actions_el = document.createElement("div");
-  task_actions_el.classList.add("actions");
-  const task_complete_el = document.createElement("span");
-  task_complete_el.classList.add("complete-sign");
-  task_actions_el.appendChild(task_complete_el);
 
-  const task_edit_el = createEditButton();
-  const delete_task = createDeleteButton();
-  task_actions_el.appendChild(task_edit_el);
-  task_actions_el.appendChild(delete_task);
+  const events_operated = Events_Operated();
 
-  task_elem.appendChild(task_actions_el);
-  list_el.appendChild(task_elem);
 
-  input.value = "";
-  let isCompleted = false;
+  function Events_Operated() {
+    const { task_complete, task_input, task_edit, delete_task } = Manger_Html_Element();
+    is_completed = false;//מפעיל את הכל 
 
-  task_complete_el.addEventListener("click", () => {
-    toggleTaskCompletion(task_elem, task_complete_el, isCompleted);
-  });
+    task_edit.addEventListener("click", () => {
+      Edit_Task(task_edit, task_input);
+    });
 
-  task_edit_el.addEventListener("click", () => {
-    editTask(task_edit_el, task_input_el);
-  });
+    delete_task.addEventListener("click", () => {
+      Remove_Task(task_elem);
+    });
+    const event_commit = function EventCommit() {
+      toggleTaskColor(task_elem, task_complete, task_input);
+    };
+    task_input.addEventListener("click", event_commit);
+    task_complete.addEventListener("click", event_commit);
+  }
 
-  delete_task.addEventListener("click", () => {
-    removeTask(task_elem);
-  });
+  /**
+   * Creates and returns a manager HTML element.
+   *
+   * @return {Object} An object containing references to the created elements.
+   */
+  function Manger_Html_Element() {
+    const task_content_el = document.createElement("div");//תוכנה משימה
+    task_content_el.classList.add("content");  /* צבע טקסט של משימות שבוצעו */
+    task_elem.appendChild(task_content_el);
 
-  task_input_el.addEventListener("click", () => {
-    toggleTaskColor(task_elem, task_complete_el, task_input_el, isCompleted);
-  });
+    const task_input = document.createElement("input");
+    task_input.classList.add("text");
+    task_input.type = "text";
+    task_input.value = task_text;
+    task_input.setAttribute("readonly", "readonly");
+    task_content_el.appendChild(task_input);
+
+    const task_actions_el = document.createElement("div");
+    task_actions_el.classList.add("actions");
+    const task_complete = document.createElement("span");
+    task_complete.classList.add("complete-sign");//מוסיף יצוע css
+    task_actions_el.appendChild(task_complete);
+
+    const task_edit = CreateEditButton();
+    task_actions_el.appendChild(task_edit);
+
+    const delete_task = CreateDeleteButton();
+    task_actions_el.appendChild(delete_task);
+
+    task_elem.appendChild(task_actions_el);
+    list_el.appendChild(task_elem);
+    return { task_complete, task_input, task_edit, delete_task };
+  }
 }
 /**
  * Removes a task element from the list element.
@@ -86,28 +117,12 @@ function addTask() {
  * @param {Element} elem - The task element to be removed.
  * @return {void} This function does not return anything.
  */
-function removeTask(elem) {
+function Remove_Task(elem) {
   list_el.removeChild(elem);
+
 }
 
-/**
- * Toggles the completion state of a task.
- *
- * @param {HTMLElement} elem - The task element.
- * @param {HTMLElement} complete_el - The completion element.
- * @param {boolean} isCompleted - The current completion state of the task.
- */
-function toggleTaskCompletion(elem, complete_el, isCompleted) {
-  if (!isCompleted) {
-    complete_el.classList.add("checked");
-    elem.classList.add("completed");
-    isCompleted = true;
-  } else {
-    complete_el.classList.remove("checked");
-    elem.classList.remove("completed");
-    isCompleted = false;
-  }
-}
+
 
 /**
  * Edits a task by toggling between edit and save mode.
@@ -115,8 +130,8 @@ function toggleTaskCompletion(elem, complete_el, isCompleted) {
  * @param {HTMLElement} edit_el - The element that triggers the edit mode.
  * @param {HTMLElement} input_el - The input element for editing the task.
  */
-function editTask(edit_el, input_el) {
-  if (!isCompleted) {
+function Edit_Task(edit_el, input_el) {
+  if (!is_completed) {
     if (edit_el.innerText.toLowerCase() == "ערוך") {
       edit_el.innerText = "שמור";
       input_el.removeAttribute("readonly");
@@ -128,21 +143,21 @@ function editTask(edit_el, input_el) {
   }
 }
 
-function toggleTaskColor(elem, complete_el, input_el, isCompleted) {
-  if (!isCompleted) {
-    if (!elem.classList.contains("completed")) {
-      complete_el.classList.add("checked");
-      input_el.style.color = "darkcyan";
-      elem.classList.add("completed");
-      isCompleted = true;
-    } else {
-      complete_el.classList.remove("checked");
-      input_el.style.color = "white";
-      elem.classList.remove("completed");
-      isCompleted = false;
-    }
+function toggleTaskColor(elem, complete_el, input_el) {
+  console.log(is_completed)
+  if (!is_completed) {
+    complete_el.classList.add("checked");
+    input_el.style.color = "teal";//משנה צבע טקסט
+    elem.classList.add("completed");
+    is_completed = true;
+  } else {
+    complete_el.classList.remove("checked");
+    input_el.style.color = "white";//מחזיר צבע טקסט
+    elem.classList.remove("completed");
+    is_completed = false;
   }
 }
+
 
 /**
  * Searches for tasks based on the value entered in the search bar.
@@ -150,17 +165,17 @@ function toggleTaskColor(elem, complete_el, input_el, isCompleted) {
  * @param {HTMLElement} search_bar - the search bar element
  * @return {type} undefined
  */
-function SearchTasks() {
+function Search_Tasks() {
   const tasks = document.querySelectorAll('.text');
-
-  if (search_bar.value !== '' && search_bar.value != undefined && search_bar.value != NaN) {
+  //   trim = עם כל הרווחים המובילים מוחלפים בכלום string הפונקציה הזו מחזירה את
+  if (search_bar.value.trim() !== '' && search_bar.value != undefined && search_bar.value != NaN) {
     const searchTerm = search_bar.value.trim().toLowerCase();
     tasks.forEach((i) => {
-      const taskText = i.value.trim().toLowerCase();
+      const text = i.value.trim().toLowerCase();
       const taskContainer = i.closest('.task');
       taskContainer.classList.remove('red-border');
 
-      if (taskText.includes(searchTerm)) {
+      if (text.includes(searchTerm)) {
         taskContainer.classList.add('red-border');
       } else {
         taskContainer.classList.remove('red-border');
@@ -169,7 +184,7 @@ function SearchTasks() {
 
   }
   else {
-    // If the search bar is empty, remove the red border from all tasks
+    /* If the search bar is empty, remove the red border from all tasks   מסדר אתה צבע למשימה מחזיר את כתב*/
     if (search_bar.value === '') {
       search_bar.placeholder = ' 🔎חיפוש משימות🔍'
     }
@@ -185,11 +200,11 @@ function SearchTasks() {
  *
  * @return {HTMLElement} The created edit button element.
  */
-function createEditButton() {
-  const task_edit_el = document.createElement("button");
-  task_edit_el.classList.add("edit");
-  task_edit_el.innerText = "ערוך";
-  return task_edit_el;
+function CreateEditButton() {
+  const edit_btn = document.createElement("button");
+  edit_btn.classList.add("edit");
+  edit_btn.innerText = "ערוך";
+  return edit_btn;
 }
 
 /**
@@ -197,7 +212,7 @@ function createEditButton() {
  *
  * @return {Element} The delete button element.
  */
-function createDeleteButton() {
+function CreateDeleteButton() {
   const delete_task = document.createElement("button");
   delete_task.classList.add("delete");
   delete_task.innerText = String.fromCodePoint("215");
