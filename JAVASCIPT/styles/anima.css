@@ -1,8 +1,29 @@
 /* anima.css */
-button:active,
-img:hover {
-    animation: flicker-out 1.8s linear both;
+img {
+    --size: 30%;
+    max-block-size: var(--size);
+    max-inline-size: var(--size);
+    display: block;
+    margin-inline-start: auto;
+    margin-left: 1%;
 }
+
+img:hover {
+    background-image: linear-gradient(180deg, #3393c7a6 100%, #000000 100%);
+    box-shadow: 2.5px 2.5px var(--background_green);
+    outline: solid;
+
+}
+
+
+button:active:hover,
+img:active {
+    animation-name: flicker-out;
+    animation-timing-function: linear;
+    animation-duration: 4s;
+    animation-delay: 1s;
+}
+
 
 @-webkit-keyframes flicker-out {
     0% {
