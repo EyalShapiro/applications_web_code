@@ -1,0 +1,167 @@
+#tasks .task {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    /* רווח בין משימה לשימה */
+    outline: auto;
+}
+
+.find-border {
+    /*נקרא בJS 
+    מאוד חשוב לחיפוש */
+    outline: 7.5px outset yellowgreen !important;
+}
+
+.task .task_bar {
+    flex: 1 1 0%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task_bar .text {
+    color: #4184e1c6;
+    background-color: var(--null);
+    /* רק של מישימות רק */
+    font-size: larger;
+    width: 100%;
+    display: block;
+    border: 2px solid transparent;
+    padding: 6px;
+}
+
+
+.task_bar {
+    display: flex;
+    margin: 0 -0.5rem;
+}
+
+.task button {
+    cursor: pointer;
+    /* סימן בעכבר משתנה */
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 1s;
+}
+
+
+.completed {
+    background-color: var(--lightgreen);
+    color: teal;
+    /* צבע טקסט של משימות שבוצעו */
+}
+
+.text {
+    outline: 1px ridge;
+    outline-style: hidden;
+    text-align: center;
+
+}
+
+
+
+.text:focus-visible {
+    color: #4184e1c6;
+    outline: dotted 1.5px;
+    text-align: start !important;
+}
+
+.complete-sign {
+    cursor: pointer;
+    color: var(--royalblue);
+    white-space: pre;
+    display: flex;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1% 1% 1% 2%;
+    order: -1;
+    /* מוזזי אותו לחתלה  */
+    margin: auto;
+    /* order: -2; */
+    text-align: center;
+    /* סימן בעכבר משתנה */
+    /* הפוך את הסמל לידידותי לגולש */
+}
+
+.complete-sign.checked::before {
+    content: " \2713" "   " " בוצע:";
+    /* סימון "✔" באמצעות תו יחיד מיוחד */
+    font-size: 20px;
+    /* גודל התו */
+    position: relative;
+    top: 3px;
+    left: 1px;
+    color: teal;
+}
+
+.complete-sign::before {
+    padding: 1%;
+    /* סגנון לסימן הסיום */
+    content: "\2610" "   " "לא בוצע:";
+    /* סימון "☐לא בוצע " באמצעות תו יחיד מיוחד */
+    font-size: 20px;
+    /* גודל התו */
+    outline: solid 1.5px;
+    top: 3px;
+    left: 1px;
+    color: #ff5947d0;
+}
+
+
+.delete-task,
+.edit {
+    background-image: linear-gradient(to right, var(--pink), var(--orange));
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--null);
+
+}
+
+.edit {
+    display: flex;
+    text-align: center;
+    outline: 5px solid var(--royalblue);
+}
+
+.editor-mode {
+    outline: 5px solid var(--orange);
+
+}
+
+.task_bar > .text:not(:read-only) {
+    color: var(--orange);
+}
+
+.edit:hover {
+    animation-delay: 1s;
+    outline-style: none;
+}
+
+.edit:active {
+    outline-style: outset;
+}
+
+.delete-task {
+    display: flex;
+    text-align: center;
+    outline: 2px groove red;
+    font-size: xx-large;
+    border: 4px groove tomato;
+}
+
+.delete-task:hover {
+    background: #ff0000ed;
+    -webkit-text-fill-color: var(--light);
+}
+
+.delete-task:active {
+    background: var(--orange);
+    -webkit-text-fill-color: red;
+}

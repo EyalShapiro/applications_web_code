@@ -7,34 +7,31 @@
 	<title>ניהול משימות</title>
 	<link rel="shortcut icon" href="./styles/img/to-do-list.svg" type="image/svg">
 
-	<link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" href="styles/size.css">
-	<!-- <link rel="stylesheet" href="styles/anima.css"> -->
+	<link rel="stylesheet" href="./styles/style.css">
 </head>
 
-
-<header class="TitleJerusalem">
-	<img src="./styles/img/to-do-list.svg">
-	<h1 class="shadow">רשימת משימות שלי</h1>
-	<div class="search-top">
-		<input id="search-bar" type="text" name="search" placeholder=" חיפוש משימות🔍">
-		<button id="search-btn">🔎חפש🔍</button>
-
-	</div>
-</header>
-
 <body dir="auto">
+
+	<header>
+		<img src="./styles/img/to-do-list.svg" alt="אותו תמונה של תאב של אתר">
+		<h1 class="shadow">רשימת משימות שלי</h1>
+		<div class="search-top">
+			<input type="text" id="search-bar" name="search" placeholder="🔍 חיפוש משימות🔎">
+			<button id="search-btn" type="button">🔍 נקה חפש🧹🔎</button>
+
+		</div>
+	</header>
+
 	<form id="new-task-form">
 		<input type="text" name="new-task-input" id="new-task-input" placeholder="הוסף כותרת למשימה החדשה" />
+		<p id="Caps-lock" style="color: red;display:none;">אזהרה! Caps Lock מופעל.</p>
+
 		<button id="btn-add" type="submit">הוסף משימה</button>
 		<button id="clear-tasks-btn" type="clear">נקה משימות</button>
 	</form>
-	<main>
-		<section class="task-list">
-			<div id="tasks"></div>
-		</section>
-	</main>
-	<script async src="src/app.js"></script>
+	<div id="tasks"></div>
+
+	<script async src="./src/app.js"></script>
 </body>
 
 </html>
