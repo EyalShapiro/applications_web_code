@@ -4,7 +4,7 @@
         "activityBar.background": "#00b3b399",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
-        "activityBarBadge.background": "#ff8c00",
+        "activityBarBadge.background": "#bf00bf",
         "activityBarBadge.foreground": "#e7e7e7",
         "commandCenter.border": "#e7e7e799",
         "sash.hoverBorder": "#00b3b399",
@@ -18,5 +18,6 @@
         "titleBar.inactiveBackground": "#00808099",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#00808099"
+    "peacock.color": "#00808099",
+    "compile-hero.disable-compile-files-on-did-save-code": false
 }

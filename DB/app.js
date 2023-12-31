@@ -14,7 +14,7 @@ function Main() {
 Main()
 
 async function SavePokemonInApi() {
-    const arr_req= Math.ceil(numberOfPokemon / batchSize);
+    const arr_req = Math.ceil(numberOfPokemon / batchSize);
     const list_pokemon = [];
 
     for (let i = 1; i <= arr_req; i++) {
@@ -57,7 +57,6 @@ async function FetchData(url) {
 }
 
 function SaveData(data) {
-
     fs.appendFileSync(json_file, data.map(item => JSON.stringify(item, null, 2)).join('\n') + '\n');
     console.warn(`Data saved to ${json_file}`);
 }
