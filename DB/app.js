@@ -21,9 +21,7 @@ async function SavePokemonInApi() {
         const get_data = new URL(apiUrl);
         get_data.searchParams.set('offset', (i - 1) * batchSize);
         get_data.searchParams.set('limit', batchSize);
-
         const batchData = await FetchData(get_data);
-
         list_pokemon.push(...batchData);
     }
     SaveData(list_pokemon);
