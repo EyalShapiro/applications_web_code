@@ -30,3 +30,12 @@ button:active {
     background: radial-gradient(circle farthest-corner at 10% 20%, orangered 17.8%, gold 100.2%);
     transition: 0.5s;
 }
+#btn-random {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 175px;
+    border-radius: 4%;
+  
+  }
+  

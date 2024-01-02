@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './style/btn.css';
-import { FindPokemon } from './FindPokemon';
-
+import {FindPokemon}  from './FindPokemon';
+import Reload from './reload/Reload';
+import './style/poke_info.css'
 
 export default function PokemonApp() {
   const [pokemon, SetPokemon] = useState({
@@ -13,27 +14,38 @@ export default function PokemonApp() {
   const [is_hidden, SetIsHidden] = useState(true);
   const [error, SetError] = useState('');
   const [searchInp, SetInpSearch] = useState('');
+  const [loading, SetLoading] = useState(true);
+  const [design_err,SetDesignErr]=useState(true);
 
 
   useEffect(() => {
     const storedPokemon = JSON.parse(localStorage.getItem('pokemon'));
     if (storedPokemon) {
+
       SetPokemon(storedPokemon);
       SetIsHidden(false);
     }
   }, []);
 
   async function GrabPoke(e) {
-      const input = e.target.value;
-      if (input.trim() !== '') {
-        SetInpSearch(input);
-      }
-      else{
-        SetInpSearch('')
-      }
+    Loading_Page();
+    const input = e.target.value;
+    if (input.trim() !== '') {
+      SetInpSearch(input);
+    }
+    else {
+      SetInpSearch('')
+    }
 
     await ChoosePokemon(input);
   }
+  function Loading_Page() {
+    setTimeout(() => {
+      SetLoading(true);
+    }, 1000 * 2); //שתי שניות דיליי
+    SetLoading(false);
+  }
+
   async function ChoosePokemon(input) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${input.toLowerCase()}`);
@@ -51,21 +63,17 @@ export default function PokemonApp() {
       const attack = stats[4].base_stat;
       const defense = stats[3].base_stat;
       const speed = stats[0].base_stat;
-
       const newPokemon = {
         number, name, pic,
         type, abilities: pokeAbilities, hp,
         attack, defense, speed,
       };
 
-      SetPokemon(newPokemon);
-      SetIsHidden(false);
-      SetError('');
-      document.querySelector('#search').style.border = ''; // Reset border style
-      document.querySelector('#err-or-search').style.outline = '2px solid forestgreen';
-      // Save to local storage
+      SetUseState(newPokemon);
       localStorage.setItem('pokemon', JSON.stringify(newPokemon));
     } catch (error) {
+      SetDesignErr(false)      
+
       SetError(error.message);
 
       if (input.trim() === '') {
@@ -73,20 +81,24 @@ export default function PokemonApp() {
         SetInpSearch('');
         ComeBack(false);
       }
-
-      document.querySelector('#err-or-search').style.outline = '2px solid #ad2323';
-      document.querySelector('#search').style.border = '2px solid orangered';
     }
   }
 
+  function SetUseState(newPokemon) {
+    SetPokemon(newPokemon);
+    SetIsHidden(false);
+    SetError('');
+    SetDesignErr(true);
+  }
+
   function GetRndInteger(min, max) {
-    const num=Math.floor(Math.random() * (max - min + 1) ) + min;
+    const num = Math.floor(Math.random() * (max - min + 1)) + min;
     return `${num}`
   }
-/**
- * Clears the Pokemon data and hides the Pokemon details.
- * @return {undefined} No return value.
- */
+  /**
+   * Clears the Pokemon data and hides the Pokemon details.
+   * @return {undefined} No return value.
+   */
 
   function ClearPokemon() {
     SetPokemon({
@@ -113,13 +125,16 @@ export default function PokemonApp() {
     <div>
       <div className="Search-Poke">
         <br />
-        <input value={searchInp}id="search" placeholder="Enter name or ID" onChange={GrabPoke} />
+        <input value={searchInp} id="search" placeholder="Enter name or ID" onChange={GrabPoke} />
         <button onClick={ClearPokemon}>Clear Pokemon</button>
-        <button id='btn-radom' onClick={()=>ChoosePokemon(GetRndInteger(1,1025))} >Random pokemon</button>
+        <button id='btn-radom' onClick={() => ChoosePokemon(GetRndInteger(1, 1025))} >Random pokemon</button>
         <br />
-        <p id='err-or-search'>{error || " Search a Pokémon..."}</p>
+        <p style={{ outline: `2px solid ${design_err ? 'forestgreen' : 'orangered'};` }} id='err-or-search'>{error || " Search a Pokémon..."}</p>
       </div>
-     <FindPokemon pokemon={pokemon} is_hidden={is_hidden}></FindPokemon>
-    </div>
+      <div id="Find-Poke" style={{visibility: is_hidden ? 'hidden' : 'visible'}}>      {loading ? (
+        <FindPokemon pokemon={pokemon} ></FindPokemon>
+        ) : (<Reload></Reload>
+      )}    </div>
+      </div>
   );
 }

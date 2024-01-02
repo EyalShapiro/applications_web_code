@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-export function FindPokemon(props) {
-  return (<div id="Find-Poke" style={{
-    visibility: props.is_hidden ? 'hidden' : 'visible'
-  }}>
+export  function FindPokemon(props) {
+  return (<div>
     <h1 id="name" className=''>{props.pokemon.name} - #{props.pokemon.number}</h1>
-    <img src={props.pokemon.pic} alt="Pokemon" />
+    <img src={props.pokemon.pic} id='PokeImg' alt="Pokemon" />
     <h3 id="type">TYPE: {props.pokemon.type}</h3>
     <h3 id="abilities">ABILITIES: {props.pokemon.abilities}</h3>
     <h3 id="hp">BASE HEALTH(hp): {props.pokemon.hp}</h3>
