@@ -122,7 +122,7 @@ export default function PokemonApp() {
   }
 
   return (
-    <div>
+    <div className='PokemonApp'>
       <div className="Search-Poke">
         <br />
         <input value={searchInp} id="search" placeholder="Enter name or ID" onChange={GrabPoke} />
@@ -131,7 +131,7 @@ export default function PokemonApp() {
         <br />
         <p style={{ outline: `2px solid ${design_err ? 'forestgreen' : 'orangered'};` }} id='err-or-search'>{error || " Search a Pokémon..."}</p>
       </div>
-      <div id="Find-Poke" style={{visibility: is_hidden ? 'hidden' : 'visible'}}>      {loading ? (
+      <div id="Find-Poke" style={{visibility: is_hidden ? 'hidden' : 'visible'}}>{loading ? (
         <FindPokemon pokemon={pokemon} ></FindPokemon>
         ) : (<Reload></Reload>
       )}    </div>
