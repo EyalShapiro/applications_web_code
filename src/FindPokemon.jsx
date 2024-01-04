@@ -1,15 +1,25 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import{ GetColorType,TypeColor, err_style,img_style,data_style } from './style-PokemonApp.jsx';
+export function FindPokemon(props) {
+  function PokeData(props) {
+    const SewDataStyle ={ ...data_style, background: props.color } ;
+    return (<li style={SewDataStyle} id={props.id}>{props.text}{props.set}</li>);
+  }
+  return (
+    <div>
+      <h1 id="name" >{props.pokemon.name} - #{props.pokemon.number}</h1>
+      <img style={img_style} src={props.pokemon.pic} id='PokeImg' alt="Pokemon" />
+      <p style={err_style} id='err-or-search'>{props.error}</p>
+      <PokeData id="abilities" text="ABILITIES:" color='#A34FB8' set={props.pokemon.abilities}></PokeData>
+      <PokeData id="type" text='TYPE:' color={TypeColor(props.pokemon.type)} set={props.pokemon.type}></PokeData>
+      {/* <p><GetColorType type={s.pokemon.abilities}></GetColorType></p> */}
+      <PokeData id="hp" text='BASE HEALTH(HP): ' color='#c26c21' set={props.pokemon.hp}></PokeData>
+      <PokeData id="speed" text="SPEED:"  color='#94861b' set={props.pokemon.speed}></PokeData>
+      <PokeData id="attack" text='ATTACK:'  color='#800f2b' set={props.pokemon.attack}></PokeData>
+      <PokeData id="defense" text="DEFENSE: " color='#21c25f'  set={props.pokemon.defense}></PokeData>
+    </div>
+  );
 
-export  function FindPokemon(props) {
-  return (<div>
-    <h1 id="name" className=''>{props.pokemon.name} - #{props.pokemon.number}</h1>
-    <img src={props.pokemon.pic} id='PokeImg' alt="Pokemon" />
-    <h3 id="type">TYPE: {props.pokemon.type}</h3>
-    <h3 id="abilities">ABILITIES: {props.pokemon.abilities}</h3>
-    <h3 id="hp">BASE HEALTH(hp): {props.pokemon.hp}</h3>
-    <h3 id="attack">ATTACK: {props.pokemon.attack}</h3>
-    <h3 id="defense">DEFENSE: {props.pokemon.defense}</h3>
-    <h3 id="speed">SPEED: {props.pokemon.speed}</h3>
-  </div>);
+
 }

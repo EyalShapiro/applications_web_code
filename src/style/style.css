@@ -11,7 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./image/backrond.png");
+
 }
 
 
@@ -20,14 +20,12 @@ h1 {
   text-shadow: 2px 2px #754c36;
 }
 
-.PokemonApp{
-  display: grid;
-  grid-template-columns: auto auto auto;
-    text-align: center;
-}
 
-#main {
-  text-align: center;
-  font-family: Bangers;
+ 
+.Header{
   font-size: 100px;
+  text-align: center;
+  color:teal;
+  margin: 0;
+  padding: 1px;
 }

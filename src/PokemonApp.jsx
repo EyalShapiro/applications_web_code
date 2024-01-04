@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import './style/btn.css';
 import {FindPokemon}  from './FindPokemon';
 import Reload from './reload/Reload';
-import './style/poke_info.css'
-
+import './style/PokemonApp.css'
 export default function PokemonApp() {
+//---------------------------
   const [pokemon, SetPokemon] = useState({
     number: '', name: '', pic: '',
     type: '', abilities: '', hp: 0,
     attack: 0, defense: 0, speed: 0,
   });
-
   const [is_hidden, SetIsHidden] = useState(true);
   const [error, SetError] = useState('');
   const [searchInp, SetInpSearch] = useState('');
   const [loading, SetLoading] = useState(true);
-  const [design_err,SetDesignErr]=useState(true);
-
-
   useEffect(() => {
     const storedPokemon = JSON.parse(localStorage.getItem('pokemon'));
     if (storedPokemon) {
-
       SetPokemon(storedPokemon);
       SetIsHidden(false);
     }
   }, []);
-
+  //---------------------------
+  function Loading_Page() {
+    setTimeout(() => {
+      SetLoading(true);
+    }, 1000 * 0.5); //שתי שניות דילי
+    SetLoading(false);
+  }
   async function GrabPoke(e) {
-    Loading_Page();
     const input = e.target.value;
     if (input.trim() !== '') {
       SetInpSearch(input);
@@ -36,16 +35,9 @@ export default function PokemonApp() {
     else {
       SetInpSearch('')
     }
-
     await ChoosePokemon(input);
+    Loading_Page();
   }
-  function Loading_Page() {
-    setTimeout(() => {
-      SetLoading(true);
-    }, 1000 * 2); //שתי שניות דיליי
-    SetLoading(false);
-  }
-
   async function ChoosePokemon(input) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${input.toLowerCase()}`);
@@ -68,14 +60,10 @@ export default function PokemonApp() {
         type, abilities: pokeAbilities, hp,
         attack, defense, speed,
       };
-
       SetUseState(newPokemon);
       localStorage.setItem('pokemon', JSON.stringify(newPokemon));
     } catch (error) {
-      SetDesignErr(false)      
-
-      SetError(error.message);
-
+        SetError(error.message);
       if (input.trim() === '') {
         ClearPokemon();
         SetInpSearch('');
@@ -83,12 +71,11 @@ export default function PokemonApp() {
       }
     }
   }
-
+const isLoggedIn = useState(false);
   function SetUseState(newPokemon) {
     SetPokemon(newPokemon);
     SetIsHidden(false);
     SetError('');
-    SetDesignErr(true);
   }
 
   function GetRndInteger(min, max) {
@@ -99,7 +86,6 @@ export default function PokemonApp() {
    * Clears the Pokemon data and hides the Pokemon details.
    * @return {undefined} No return value.
    */
-
   function ClearPokemon() {
     SetPokemon({
       number: '', name: '', pic: '',
@@ -120,7 +106,6 @@ export default function PokemonApp() {
     SetIsHidden(!is_hidden);
     return is_hidden;
   }
-
   return (
     <div className='PokemonApp'>
       <div className="Search-Poke">
@@ -129,10 +114,9 @@ export default function PokemonApp() {
         <button onClick={ClearPokemon}>Clear Pokemon</button>
         <button id='btn-radom' onClick={() => ChoosePokemon(GetRndInteger(1, 1025))} >Random pokemon</button>
         <br />
-        <p style={{ outline: `2px solid ${design_err ? 'forestgreen' : 'orangered'};` }} id='err-or-search'>{error || " Search a Pokémon..."}</p>
       </div>
       <div id="Find-Poke" style={{visibility: is_hidden ? 'hidden' : 'visible'}}>{loading ? (
-        <FindPokemon pokemon={pokemon} ></FindPokemon>
+        <FindPokemon pokemon={pokemon} err={error} ></FindPokemon>
         ) : (<Reload></Reload>
       )}    </div>
       </div>
