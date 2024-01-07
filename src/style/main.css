@@ -1,0 +1,40 @@
+@import url('./all-btn.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/pokemon.css');
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-weight: 800;
+  color-scheme: light dark;
+  color: snow;
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+#main{
+  outline:auto;
+  margin:0px;
+  display: 'flex';
+  flex-direction: 'column-reverse';
+}
+.header{
+  word-wrap: break-word;
+  background-image: url("./img/top_title.svg");
+  background-clip: padding-box;
+  background-repeat: no-repeat;
+  font-size: 100px;
+  text-align: center;
+  color: #FFCB05;
+  font-family: 'Pokemon Solid', sans-serif; 
+  text-shadow: 6px 6px 0 #4074b5, 6px -6px 0 #4074b5, -6px 6px 0 #4074b5, -6px -6px 0 #4074b5, 6px 0px 0 #4074b5, 0px 6px 0 #4074b5, -6px 0px 0 #4074b5, 0px -6px 0 #4074b5;   font-family: 'Pokemon Solid', sans-serif;
+  margin: 0.2px;
+  padding: 5px;
+  margin: auto;
+  top: 0;
+}
+@media( max-width: 700px ) {
+  .Header{
+    font-size:100%;
+  }
+}

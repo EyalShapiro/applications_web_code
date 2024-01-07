@@ -1,0 +1,59 @@
+
+
+.PokemonApp {
+  background-image: url("./backrond.png");
+  background-clip: border-box;  
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /*אם אני רוצה שזה לא יהיה כפול */
+  background-attachment: fixed;
+  outline: auto;   
+  text-align: center;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 2%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+
+.Poke-info {
+  position: sticky;
+  border: 1px ridge palegreen;
+  background-color: #9aaebaac;
+  font-size: 125%;
+  padding: 5px 100px 5px;
+  max-width: 65%;
+  border-radius:1rem;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-self: end ;
+}
+.Search-Poke {
+  padding: 35px 50px 15px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 4%;
+  margin-left:10%;
+  max-width: 60%;
+  min-height: 40%;
+  height:15px;
+  outline: tan ridge 4px;
+  background-color: #ecbd8b80;
+}
+
+#search,
+#search::placeholder {
+  display: block;
+  margin: 0 auto;
+  padding: 1%;
+  color: #FFCB05;
+  outline: #4074b5 solid 1px;
+  
+}
+
+ul{
+  list-style: none;
+}
