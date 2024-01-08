@@ -2,14 +2,19 @@ button {
     width: 165px;
     height: 62px;
     cursor: pointer;
-    color: #fff;
     font-size: 17px;
     border-radius: 1rem;
     border: none;
     position: relative;
     background: #100720;
     transition: 0.1s;
+    font-size: 150%;
+
     margin: 1.5%;
+    color: #FFCB05;
+    font-family: 'Pokemon Solid', sans-serif;
+    text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
+    font-family: 'Pokemon Solid', sans-serif;
 }
 
 button::after {

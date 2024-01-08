@@ -3,12 +3,10 @@
 .PokemonApp {
   background-image: url("./backrond.png");
   background-clip: border-box;  
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
   position: relative;
   /*אם אני רוצה שזה לא יהיה כפול */
   background-attachment: fixed;
-  outline: auto;   
   text-align: center;
   justify-self: center;
   display: grid;
@@ -23,13 +21,14 @@
   border: 1px ridge palegreen;
   background-color: #9aaebaac;
   font-size: 125%;
-  padding: 5px 100px 5px;
+  padding: 4px 100px 4px;
   max-width: 65%;
-  border-radius:1rem;
   display: flex;
   text-align: center;
   flex-direction: row;
   justify-self: end ;
+  border-radius: 10px;
+
 }
 .Search-Poke {
   padding: 35px 50px 15px;
@@ -56,4 +55,10 @@
 
 ul{
   list-style: none;
+}
+li{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

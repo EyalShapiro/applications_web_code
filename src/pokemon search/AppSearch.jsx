@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {FindPokemon}  from './Components/FindPokemon.jsx';
-import Reload from '../reload/Reload.tsx';//שתי נקודות יצא מתיקה
+import Card  from '../Components/card/Card.tsx';
 import './assets/AppSearch.css'
-import ApiFetch from '../utils/ApiFetch.tsx';
+import ApiFetch from '../Api/ApiFetch.tsx';
+import Reload from '../Components/Reloads/Reload.tsx'
+
+
+
 export default function SearchPokeApp() {
   //---------------------------
   const poke_obj=    {
@@ -54,14 +57,14 @@ export default function SearchPokeApp() {
       const img =sprites.front_default;
 
       const type = types.map((type) => type.type.name).join(",").toUpperCase().split(',');
-      const pokeAbilities = abilities.map((ability) => ability.ability.name).join(", ").toUpperCase();
+      const avli = abilities.map((ability) => ability.ability.name).join(", ").toUpperCase();
       const hp = stats[5].base_stat;
       const attack = stats[4].base_stat;
       const defense = stats[3].base_stat;
       const speed = stats[0].base_stat;
       const new_pokemon = {
         number, name, img,gif,
-        type, abilities: pokeAbilities, hp,
+        type, abilities: avli, hp,
         attack, defense, speed,
       };
       SetUseState(new_pokemon);
@@ -81,7 +84,6 @@ export default function SearchPokeApp() {
     SetIsHidden(false);
     SetError('');
   }
-
   function GetRndInteger(min, max) {
     const num = Math.floor(Math.random() * (max - min + 1)) + min;
     return `${num}`
@@ -120,7 +122,7 @@ export default function SearchPokeApp() {
         <button id='btn-radom' onClick={RandomPokemon} >Random pokemon</button>
       </div>
       <li className="Poke-info"  style={{visibility: is_hidden ? 'hidden' : 'visible'}}>{loading ? (
-        <FindPokemon pokemon={pokemon} err={error} ></FindPokemon>
+        <Card pokemon={pokemon} err={error} ></Card>
         ) : (<Reload></Reload>
       )}    </li>
       </div>

@@ -1,0 +1,113 @@
+/* המצה */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.Shaw-poke {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+/* עיצוב נוסף של התמונה של הפוקימון */
+#poke-image {
+  cursor: url(arrow2282.png) , default !important;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* כדור פוקימון עם המצה */
+.pokeball.show-poke {
+  position: relative;
+}
+
+.pokeball.show-poke  {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #f39c12;
+  border-radius: 50%;
+  animation: confetti-fall 2s linear forwards;
+}
+
+/* עיצוב נוסף של הכדור */
+.pokeball {
+  margin: 1%;
+  display: block;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+      white 16px,
+      black 17px 18px,
+      white 19px 24px,
+      black 25px 32px,
+      transparent 33px
+    ),
+    linear-gradient(to bottom, red 0 80px, black 81px 105px, white 97px 100%);
+  border-radius: 50%;
+  border: 8px solid black;
+  box-shadow: inset -16px -8px 0 0 rgba(0, 0, 0, 0.2);
+  animation: fall 0.5s ease-in-out 1s,
+    shake 0.84s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s 3,
+    catch 0.4s ease-out 0.25s forwards;
+}
+
+/* Animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  20% {
+    transform: translateX(-10px) rotate(-20deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(20deg);
+  }
+  50% {
+    transform: translateX(-10px) rotate(-10deg);
+  }
+  60% {
+    transform: translateX(10px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(calc(-200% + var(--base-ball-size)));
+  }
+  60% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(calc(-10% + var(--base-ball-size)));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes catch {
+  to {
+    filter: saturate(0.8) brightness(0.8);
+  }
+}
+
+/* Responsive ball size based on viewport width */
+@media screen and (max-width: 600px) {
+  :root {
+    --ball-size: 20vw;
+  }
+}
