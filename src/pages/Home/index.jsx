@@ -1,11 +1,13 @@
-import React, { Component } from "react";
-import SearchPokeApp from '../../pokemon search/AppSearch.jsx';
-// import Pokemonboll_Title from'./style/Pokemonboll_Title.tsx'
-export default function Home({ }) {
-  return (<>  <React.StrictMode>
+import React from "react";
+import PokemonList from "./PokeList";
+
+export default function Home() {
+
+  return (
     <div id='main'>
-      <SearchPokeApp></SearchPokeApp>
+      <PokemonList />
     </div>
-  </React.StrictMode></>);
+  );
 
 }
+

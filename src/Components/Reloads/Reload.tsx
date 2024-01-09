@@ -1,11 +1,10 @@
-import React from 'react'
 import './load.css'
 import './SpinningBall.css'
-
-
-//https://uiverse.io/adamgiebl/stale-puma-26
-
-export default function Reload() {
+/**
+ * Render a loader component.
+ * @return {JSX.Element} The body element with a loader component.
+ */
+export default function Reload(): JSX.Element {
     return (<body>
         <div className="loader">
             <span className='pokeball-spin'></span>

@@ -1,0 +1,58 @@
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: darkblue;
+  margin-top: auto;
+  position: sticky;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+
+.pag_bar {
+  float: left;
+  font-family: 'Pokemon Solid', sans-serif;
+  text-align: center;
+  padding: 2px 8px;
+  text-decoration: none;
+  border: #4074b5 ridge 4px;
+  margin-bottom: 1%;
+}
+.navbar ul a.active {
+  color: #1ad760; 
+  
+}
+.navbar ul a {
+  color: #FFCB05;
+  text-decoration: none;
+ }
+
+ .navbar ul a:hover {
+  color: #4074b5;
+  background-color: lavenderblush;
+ }
+
+.header {
+  word-wrap: break-word;
+  background-image: url("./top_title.svg");
+  background-clip: padding-box;
+  background-repeat: no-repeat;
+  font-size: 100px;
+  text-align: center;
+  color: #FFCB05;
+  font-family: 'Pokemon Solid', sans-serif;
+  text-shadow: 6px 6px 0 #4075b59d, 6px -6px 0 #4075b59d, -6px 6px 0 #4075b59d, -6px -6px 0 #4075b59d, 6px 0px 0 #4075b59d, 0px 6px 0 #4075b59d, -6px 0px 0 #4075b59d, 0px -6px 0 #4075b59d;
+  font-family: 'Pokemon Solid', sans-serif;
+  padding: 5px;
+  margin: auto;
+
+  top: 0;
+}
+
+@media(max-width: 700px) {
+  .Header {
+    font-size: 100%;
+  }
+}

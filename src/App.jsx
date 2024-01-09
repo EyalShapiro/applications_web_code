@@ -1,15 +1,38 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import { NavBar } from "./Components/RootBar/root navbar.jsx";
 import Home from "./pages/Home/index.jsx";
-import Header from './Components/Header/Header.jsx';
+import SearchPokeApp from "./pokemon search/AppSearch.jsx";
+import MyTeam from "./pages/Team Poke/index.jsx";
+import NotFoundPage from "./pages/NotFoundPage/index.jsx";
+import barIco from './style/img/poke.png';
+import PokemonDetails from "./Components/PokemonDetails/PokemonDetails.jsx";
+
 
 function App() {
   return (
-    <div>
-      <Header></Header>
+      <div id='main-header' >
+      <h1 className='header'> Pokémon</h1>
+      <img src={barIco} width='3%' alt="logo" />
+      <Box>
+        <Router>
+          <div>
+            <NavBar/>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Search" element={<SearchPokeApp  InputIDPoke={''} />} />
+              <Route path="/pokemon/:id" element={<PokemonDetails />} />
+              <Route path="/MyTeam" element={<MyTeam />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
+        </Router>
+        </Box>
+        </div>
 
-      <Home />
-    </div>
-  );
+      );
 }
 
 export default App;

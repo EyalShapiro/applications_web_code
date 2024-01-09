@@ -1,10 +1,12 @@
 import React from "react";
 import './assets/style.css'
-import Svg from './assets/PokéBall.svg'
-import SearchPokeApp from "../../pokemon search/AppSearch";
+import CatchingPokemonTwoToneIcon from '@mui/icons-material/CatchingPokemonTwoTone';
 const ImageGrid = () => {
+  const IconStyle = {
+     fontSize: 100, color:'red', backgroundColor: '#90ee9073',borderRadius:'10%'  
+  }
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="team">
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
@@ -12,8 +14,8 @@ const ImageGrid = () => {
       }}>
 
         {[...Array(6)].map((_, index) => (
-          <img key={index} src={Svg} alt={`Image ${index + 1}`} Link={SearchPokeApp } />
-        ))}
+
+          <CatchingPokemonTwoToneIcon sx={IconStyle} />))}
       </div>
     </div >
   );
@@ -21,7 +23,6 @@ const ImageGrid = () => {
 export default function MyTeam() {
   return (
     <div className="app">
-      <h1>Image Grid</h1>
       <ImageGrid />
     </div>
   );

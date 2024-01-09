@@ -3,7 +3,7 @@ const https = require('https');
 const ApiUrl = new URL('https://pokeapi.co/api/v2/pokemon/');
 const numberOfPokemon = 10;
 const batchSize = 5;
-const PokemonList=[]
+const PokeArr=[]
 
 function Main() {
     SavePokemonNames();
@@ -22,8 +22,8 @@ async function FetchData(url) {
                 process.stdout.write(d);
             });
             res.on('end', () => {
-                const pokemonList = JSON.parse(rawData).results;
-                resolve(pokemonList);
+                const PokeArr = JSON.parse(rawData).results;
+                resolve(PokeArr);
             });
         });
         req.on('error', (e) => {
@@ -44,7 +44,7 @@ export default async function GetPokemonNames() {
         const names = batchData.map(pokemon => pokemon.name);
         pokemonNames.push(...names);
     }
-    PokemonList.push(...pokemonNames);
-    return PokemonList
+    PokeArr.push(...pokemonNames);
+    return PokeArr
 }
 

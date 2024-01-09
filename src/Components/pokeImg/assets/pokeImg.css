@@ -12,12 +12,11 @@
   display: flex;
   justify-content: center;
   align-self: center;
-}
+  }
 
 /* עיצוב נוסף של התמונה של הפוקימון */
 #poke-image {
-  cursor: url(arrow2282.png) , default !important;
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;

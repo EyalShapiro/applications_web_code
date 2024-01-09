@@ -36,14 +36,15 @@ function PokemonBallImg(props: PokemonBallImgProps): JSX.Element {
   }
 
   useEffect(() => {
- 
+
+
   }, [props.isAnimated]);
 
   return (
     <div className="Shaw-poke" onClick={switchPicture}>
       <main
         className={`pokeball`}
-        onAnimationEnd={animationEnd}>
+        onAnimationEnd={props.isAnimated?animationEnd:undefined}>
         <img
           style={{ visibility: showPoke ? 'visible' : 'hidden' }}
           alt={props.alt}
