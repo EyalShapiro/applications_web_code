@@ -1,5 +1,4 @@
 import './load.css'
-import './SpinningBall.css'
 /**
  * Render a loader component.
  * @return {JSX.Element} The body element with a loader component.

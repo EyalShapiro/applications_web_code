@@ -1,35 +1,25 @@
-/* PokemonDetails.css */
 
-.pokemon-details-modal {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(0, 0, 0, 0.5);
+.PokemonDetails {
+   color: #f0e68c9f;
+   /* overflow: auto !important; */
+   padding: 0;
+   background-image: url("./giphy.gif");
+   background-repeat: no-repeat;
+   background-size:auto;
+   
+
 }
-
+ 
 .modal-content {
    background-color: #fefefe;
-   padding: 20px;
+   padding: 60%;
    border: 1px solid #888;
    border-radius: 5px;
 }
-
-.close {
-   color: #aaa;
-   float: right;
-   font-size: 28px;
-   font-weight: bold;
-   cursor: pointer;
+#card{
+   display: flex;
+   align-self: center;
+   justify-self: center;
 }
 
-.close:hover,
-.close:focus {
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
-}
+

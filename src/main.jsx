@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom/client'
 
-import './style/main.css'
+import '../assets/main.css'
 import App from "./App.jsx";
 
 // import Pokemonboll_Title from'./style/Pokemonboll_Title.tsx'

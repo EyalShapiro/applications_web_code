@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { NavBar } from "./Components/RootBar/root navbar.jsx";
 import Home from "./pages/Home/index.jsx";
-import SearchPokeApp from "./pokemon search/AppSearch.jsx";
+import SearchPokeApp from "./pages/pokemon search/AppSearch.jsx";
 import MyTeam from "./pages/Team Poke/index.jsx";
 import NotFoundPage from "./pages/NotFoundPage/index.jsx";
-import barIco from './style/img/poke.png';
+import barIco from '../assets/img/poke.png';
 import PokemonDetails from "./Components/PokemonDetails/PokemonDetails.jsx";
 
 

@@ -1,9 +1,8 @@
-//AppSearch.jsx
 import React, { useState, useEffect } from "react";
-import Card from "../Components/card/Card.tsx";
+import Card from "../../Components/card/Card.tsx";
 import "./assets/AppSearch.css";
-import ApiFetch from "../Api/ApiFetch.jsx";
-import Reload from "../Components/Reloads/Reload.tsx";
+import ApiFetch from "../../Api/ApiFetch.jsx";
+import Reload from "../../Components/Reloads/Reload.tsx";
 
 export default function SearchPokeApp(props) {
   //---------------------------
@@ -33,7 +32,7 @@ export default function SearchPokeApp(props) {
   function Loading_Page() {
     setTimeout(() => {
       SetLoading(true);
-    }, 1000 * 0.5); //חצי שנייה דילי
+    }, 1000 * 0.5); 
     SetLoading(false);
   }
   /**
@@ -125,15 +124,6 @@ export default function SearchPokeApp(props) {
     localStorage.removeItem("pokemon");
   }
 
-  /**
-   * Toggles the value of the is_hidden parameter and returns its new value.
-   * @param {boolean} is_hidden - The current value of the is_hidden parameter.
-   * @return {boolean} The new value of the is_hidden parameter.
-   */
-  function ComeBack(is_hidden) {
-    SetIsHidden(!is_hidden);
-    return is_hidden;
-  }
   function RandomPokemon() {
     Loading_Page();
     ChoosePokemon(GetRndInteger(1, 1025));

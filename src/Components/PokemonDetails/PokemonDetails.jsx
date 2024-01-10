@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import Card from '../card/Card.tsx'
 import ApiFetch from "../../Api/ApiFetch.jsx";
+import './PokemonDetails.css'
 
 async function NewData(input) {
    const data = await ApiFetch(input);
@@ -33,7 +34,7 @@ async function NewData(input) {
    return new_pokemon;
 }
 
-function PokemonDetails(props) {
+function PokemonDetails() {
    const { id } = useParams();
 
    const [pokemonData, setPokemonData] = useState(null);
@@ -47,12 +48,16 @@ function PokemonDetails(props) {
       fetchData();
    }, [id]);
 
+   const StyleLink = {
+      color: '#4DABF7', fontSize: '120%',
+      border: 'solid #4DABF7 ', background: '#98fb9855'
+   };
    return (
-      <div>
-         <h2>Pokemon Details Page</h2>
-         {pokemonData && <Card pokemon={pokemonData} />}
-         <Link to="/">Back to Pokemon List</Link>
-      </div>
+      <div className='PokemonDetails'>
+         <Link style={StyleLink} to="/">Back to Pokemon List</Link>
+          <div id='card'>
+         {pokemonData &&<Card pokemon={pokemonData} />}
+      </div></div>
    );
 }
 
