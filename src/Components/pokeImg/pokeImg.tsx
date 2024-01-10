@@ -50,7 +50,7 @@ function PokemonBallImg(props: PokemonBallImgProps): JSX.Element {
           alt={props.alt}
           id='poke-image'
           src={!pic ? props.Gif : props.Img}
-          height={!pic ? '80%' : '100%'}
+          height={!pic ? '90%' : '110%'}
         />
       </main>
     </div>

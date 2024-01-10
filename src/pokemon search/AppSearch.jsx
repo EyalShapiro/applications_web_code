@@ -99,23 +99,18 @@ export default function SearchPokeApp(props) {
 
   /**
    * Sets the state of the component with the new Pokemon value, and updates the hidden state and error state.
-   *
    * @param {type} new_pokemon - The new Pokemon value.
    * @return {type} No return value.
    */
   function SetUseState(new_pokemon) {
     SetPokemon(new_pokemon);
-    SetIsHidden(false);
     SetError("");
+    SetIsHidden(false);
   }
   function GetRndInteger(min, max) {
     const num = Math.floor(Math.random() * (max - min + 1)) + min;
     return `${num}`;
   }
-  /**
-   * Clears the Pokemon data and hides the Pokemon details.
-   * @return {undefined} No return value.
-   */
 
   /**
    * Clears the Pokemon data, sets the Pokemon object, hides the Pokemon, clears the search input,
@@ -151,10 +146,9 @@ export default function SearchPokeApp(props) {
           id="search"
           placeholder="Enter name or ID"
           onInput={GrabPoke} />
-          <button
-            id="btn"
-            onClick={() => { return }}>
-            I choose you</button>
+         <button id="btn"
+          onClick={() => ComeBack(is_hidden)}>
+        I choose you</button>
         <button id="btn" onClick={ClearPokemon}>
           Clear Pokemon
         </button>

@@ -1,0 +1,38 @@
+[
+  {
+    "nome": "Gen 1",
+    "start": 1
+  },
+  {
+    "nome": "Gen 2",
+    "start": 152
+  },
+  {
+    "nome": "Gen 3",
+    "start": 252
+  },
+  {
+    "nome": "Gen 4",
+    "start": 387
+  },
+  {
+    "nome": "Gen 5",
+    "start": 495
+  },
+  {
+    "nome": "Gen 6",
+    "start": 653
+  },
+  {
+    "nome": "Gen 7",
+    "start": 722
+  },
+  {
+    "nome": "Gen 8",
+    "start": 810
+  },
+  {
+    "nome": "Gen 9",
+    "start": 906
+  }
+]

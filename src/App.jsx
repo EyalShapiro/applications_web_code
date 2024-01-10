@@ -22,7 +22,7 @@ function App() {
             <NavBar/>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/Search" element={<SearchPokeApp  InputIDPoke={''} />} />
+              <Route path="/Search" element={<SearchPokeApp />} />
               <Route path="/pokemon/:id" element={<PokemonDetails />} />
               <Route path="/MyTeam" element={<MyTeam />} />
               <Route path="*" element={<NotFoundPage />} />

@@ -1,13 +1,13 @@
-
-export const fetchPokemonList = async (num, page) => {
+export const fetchPokemonList = async (limit, page, start) => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${num * 5}&offset=${(page - 1) * num * 5}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${(page - 1) * limit}`
     );
     const data = await response.json();
     const pokemonList = data.results;
-    const detailsPromises = pokemonList.map(async (pokemon) => {
-      const detailsResponse = await fetch(pokemon.url);
+
+    const detailsPromises = pokemonList.map(async (pokemon, index) => {
+      const detailsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${start + index}`);
       const detailsData = await detailsResponse.json();
       return {
         id: detailsData.id,

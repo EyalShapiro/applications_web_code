@@ -38,10 +38,10 @@ export default function Card(props:CardProps): JSX.Element {
   return (
     <div>
       <p style={err_style} id='err-or-search'>{props.error}</p>
-      <h2 id="name_poke" style={name_style}>{props.pokemon.name} - #{props.pokemon.number}</h2>
       {/* <img style={img_style} src={props.pokemon.img} id='PokeImg' alt={'pokemon:\n' + props.pokemon.name} /> */}
-      <PokemonBallImg Gif={props.pokemon.gif} Img={props.pokemon.img} alt={`pokemon:\n ${props.pokemon.name}`} isAnimated={false} />
       <ul>
+      <h2 id="name_poke" style={name_style}>{props.pokemon.name} - #{props.pokemon.number}</h2>
+      <PokemonBallImg Gif={props.pokemon.gif} Img={props.pokemon.img} alt={`pokemon:\n ${props.pokemon.name}`} isAnimated={false} />
         <PokeData id="abilities" text={"ABILITIES:" } color='#A34FB8' set={props.pokemon.abilities}></PokeData>
         <PokeData id="type" text='TYPE:' color='#9d7373' set={GetColorType(props.pokemon.type)}></PokeData>
         <PokeData id="hp" text='BASE HEALTH(HP): ' color='#c26c21' set={props.pokemon.hp}></PokeData>
