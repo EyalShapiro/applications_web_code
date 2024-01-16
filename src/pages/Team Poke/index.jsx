@@ -1,4 +1,4 @@
-//Team.jsx
+//one day to finish this
 import React from "react";
 import './assets/style.css'
 import CatchingPokemonTwoToneIcon from '@mui/icons-material/CatchingPokemonTwoTone';

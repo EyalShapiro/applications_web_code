@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Card from "../../Components/card/Card.tsx";
 import "./assets/AppSearch.css";
-import ApiFetch from "../../Api/ApiFetch.jsx";
+import ApiFetch from "../../Api/ApiFetch.js";
 import Reload from "../../Components/Reloads/Reload.tsx";
 
-export default function SearchPokeApp(props) {
+export default function SearchPokeApp() {
   //---------------------------
   const poke_obj = {
     number: "", name: "", img: "", gif: "", type: "",

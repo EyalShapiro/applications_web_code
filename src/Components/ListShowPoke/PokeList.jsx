@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import { fetchPokemonList } from "../../Api/list_DATA.jsx";
+import { fetchPokemonList } from "../../Api/list_DATA.js";
 import "./assets/PokemonList.css";
-import PokemonBallImg from "../../Components/pokeImg/pokeImg.tsx";
+import PokemonBallImg from "../pokeImg/pokeImg.tsx";
 import geracoes from "../../Api/data/Gen.json";
 
 function PokemonList() {
@@ -25,7 +25,7 @@ function PokemonList() {
       SetStart(start + limit);
    };
 
-   const handlePrevPage = () => {
+   const handlePrevPage = () => { 
       SetStart(Math.max(start - limit, 1));
    };
 

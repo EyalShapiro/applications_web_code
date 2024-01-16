@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import Card from '../card/Card.tsx'
-import ApiFetch from "../../Api/ApiFetch.jsx";
+import ApiFetch from "../../Api/ApiFetch.js";
 import './PokemonDetails.css'
 
 async function NewData(input) {
