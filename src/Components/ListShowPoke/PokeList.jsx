@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import { fetchPokemonList } from "../../Api/list_DATA.jsx";
+
+import { fetchPokemonList } from "../../Api/list_DATA.ts";
 import "./assets/PokemonList.css";
-import PokemonBallImg from "../../Components/pokeImg/pokeImg.tsx";
-import geracoes from "../../Api/data/Gen.json";
+import { ShowPokeSelect } from './ShowPokeSelect';
+import GetGen from "../../Api/data/Gen.json";
 
 function PokemonList() {
    const [pokemonData, setPokemonData] = useState([]);
@@ -12,6 +12,7 @@ function PokemonList() {
    const [selectedGen, setSelectedGen] = useState("all");
    const [start, SetStart] = useState(1);
    const [limit, SetLimit] = useState(10);
+   const [loading, SetLoading] = useState(true);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -35,7 +36,7 @@ function PokemonList() {
 
    const handleGenChange = (event) => {
       const selectedGeneration = event.target.value;
-      const selectedGenData = geracoes.find((generation) => generation.nome === selectedGeneration);
+      const selectedGenData = GetGen.find((generation) => generation.nome === selectedGeneration);
       const newStart = selectedGenData ? selectedGenData.start : 1;
       setSelectedGen(selectedGeneration);
       SetStart(newStart);
@@ -55,28 +56,22 @@ function PokemonList() {
             <div className="gen-filter">
                <select value={selectedGen} onChange={handleGenChange}>
                   <option value="all">All</option>
-                  {geracoes.map((gen) => (
+                  {GetGen.map((gen) => (
                      <option key={gen.nome} value={gen.nome}>
                         {gen.nome}
                      </option>
                   ))}
                </select>
                <length value='number poke show'></length>
-               <input type='number' style={{width: '50px'}} value={limit}  onInput={handleLimitChange} />
+               <input type='number' style={{ width: '50px' }} value={limit} onInput={handleLimitChange} />
             </div>
             <button onClick={handlePrevPage} id='prev'>Previous</button>
             <button onClick={handleNextPage} id='prev'>Next</button>
          </div>
+         
          <div className="pokemon-list">
             {pokemonData.map((pokemon) => (
-               <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
-                  <div className='pokemon-container' onClick={() => handleCardClick(pokemon)}>
-                     <PokemonBallImg Gif={pokemon.image} Img={pokemon.image} alt={`pokemon:\n ${pokemon.name}`} />
-                     <p className="pokemon-name">
-                        {pokemon.name} (ID: {pokemon.id})
-                     </p>
-                  </div>
-               </Link>
+               <ShowPokeSelect handleCardClick={handleCardClick} pokemon={pokemon} />
             ))}
          </div>
       </div>

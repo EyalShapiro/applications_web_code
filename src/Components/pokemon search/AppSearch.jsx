@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Card from "../../Components/card/Card.tsx";
+import Card from "../card/Card.tsx";
 import "./assets/AppSearch.css";
-import ApiFetch from "../../Api/ApiFetch.jsx";
-import Reload from "../../Components/Reloads/Reload.tsx";
+import ApiFetch from "../../Api/ApiFetch.ts";
+import Reload from "../Reloads/Reload.tsx";
 
-export default function SearchPokeApp(props) {
+export default function SearchPokeApp() {
   //---------------------------
   const poke_obj = {
     number: "", name: "", img: "", gif: "", type: "",
@@ -27,22 +27,22 @@ export default function SearchPokeApp(props) {
 
   /**
    * A function that sets the loading state to true after a delay of 0.5 seconds and then sets it to false.
-   * @return {undefined} No return value.
+   * @return  No return.
    */
   function Loading_Page() {
     setTimeout(() => {
       SetLoading(true);
-    }, 1000 * 0.5); 
+    }, 1000 * 0.5);
     SetLoading(false);
   }
+
   /**
-   * Asynchronously grabs a Poke.
-   *
-   * @param {type} e - the event object
-     * @return {type} - None.
+   * A function that grabs a Pokemon based on the input value.
+   * @param {Event} event - the event object
+   * @return {Promise<void>} a promise that resolves to undefined
    */
-  async function GrabPoke(e) {
-    const input = e.target.value;
+  async function GrabPoke(event) {
+    const input = event.target.value;
     if (input.trim() !== "") {
       SetInpSearch(input);
     } else {
@@ -54,8 +54,8 @@ export default function SearchPokeApp(props) {
   /**
    * Asynchronously chooses a Pokemon based on the input provided.
    *
-   * @param {type} input - The input used to fetch the Pokemon data.
-   * @return {type} - None.
+   * @param {string|number} input - The input used to fetch the Pokemon data.
+   * @return  No return.
    */
   async function ChoosePokemon(input) {
     try {
@@ -97,25 +97,32 @@ export default function SearchPokeApp(props) {
   }
 
   /**
-   * Sets the state of the component with the new Pokemon value, and updates the hidden state and error state.
-   * @param {type} new_pokemon - The new Pokemon value.
-   * @return {type} No return value.
+   * Sets the state of the component with a new pokemon.
+   *
+   * @param {object} new_pokemon - The new pokemon to set the state with.
+   * @return  No return.
    */
   function SetUseState(new_pokemon) {
     SetPokemon(new_pokemon);
     SetError("");
     SetIsHidden(false);
   }
+  /**
+   * Generates a random integer between the minimum and maximum values.
+   *
+   * @param {number} min - The minimum value.
+   * @param {number} max - The maximum value.
+   * @return {string} The randomly generated integer as a string.
+   */
   function GetRndInteger(min, max) {
     const num = Math.floor(Math.random() * (max - min + 1)) + min;
     return `${num}`;
   }
 
+
   /**
-   * Clears the Pokemon data, sets the Pokemon object, hides the Pokemon, clears the search input,
-   * and removes the Pokemon data from local storage.
-   * @param {type} paramName - description of parameter
-   * @return {type} description of return value
+   * Clears the Pokemon data and resets the search input.
+   * @return  No return.
    */
   function ClearPokemon() {
     SetPokemon(poke_obj);
@@ -124,6 +131,10 @@ export default function SearchPokeApp(props) {
     localStorage.removeItem("pokemon");
   }
 
+  /**
+   * Generates a random Pokemon by executing the necessary steps.
+   * @return  No return.
+   */
   function RandomPokemon() {
     Loading_Page();
     ChoosePokemon(GetRndInteger(1, 1025));
@@ -136,9 +147,9 @@ export default function SearchPokeApp(props) {
           id="search"
           placeholder="Enter name or ID"
           onInput={GrabPoke} />
-         <button id="btn"
+        <button id="btn"
           onClick={() => ComeBack(is_hidden)}>
-        I choose you</button>
+          I choose you</button>
         <button id="btn" onClick={ClearPokemon}>
           Clear Pokemon
         </button>

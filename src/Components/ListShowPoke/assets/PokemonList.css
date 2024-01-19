@@ -1,21 +1,19 @@
 
 .app-home {
   background-image: url("./leg.png");
-  background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll, fixed;
   background-repeat: no-repeat;
-  width: 100%;
+  background-size: cover;
+  width: 100vw;
   height: 100vh;
+  outline: 0.1px ridge #4074b5;
+  overflow: auto !important;
   padding: 0;
   margin: 0;
   background-clip: padding-box;
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
   text-align: center;
-  align-self: center;
-  justify-self: center;
-  margin-top: 200px;
   position: sticky;
 }
 #total{

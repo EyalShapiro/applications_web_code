@@ -2,14 +2,12 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background: darkblue;
+  background: #1298c166;
   margin-top: auto;
-  position: sticky;
   width: 100%;
   z-index: 1;
   top: 0;
 }
-
 
 .pag_bar {
   float: left;
@@ -18,21 +16,23 @@
   padding: 2px 8px;
   text-decoration: none;
   border: #4074b5 ridge 4px;
-  margin-bottom: 1%;
+  margin-bottom: 0.5%;
 }
+
 .navbar ul a.active {
-  color: #1ad760; 
-  
+  color: #1ad760;
+
 }
+
 .navbar ul a {
   color: #FFCB05;
   text-decoration: none;
- }
+}
 
- .navbar ul a:hover {
+.navbar ul a:hover {
   color: #4074b5;
   background-color: lavenderblush;
- }
+}
 
 .header {
   word-wrap: break-word;

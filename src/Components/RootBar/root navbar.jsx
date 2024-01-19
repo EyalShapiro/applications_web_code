@@ -15,8 +15,6 @@ export class NavBar extends React.Component {
     return (
       <nav className='navbar'>
         <ul>
-          <li>
-          </li>
           <li className="pag_bar">
             <NavLink to="/" activeClassName="activeLink"><BungalowIcon sx={ico_style} />→Home</NavLink>
           </li>

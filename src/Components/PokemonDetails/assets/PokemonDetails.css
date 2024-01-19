@@ -1,0 +1,39 @@
+
+.PokemonDetails {
+   background-image: url("./back_ball.png");
+   background-attachment: scroll,local ;
+   background-blend-mode: lighten;
+
+   background-size: cover;
+   width: 100%;
+   /* height: ; */
+   box-sizing:border-box;
+
+   
+   text-align: center !important;
+   /* overflow: auto !important; */
+ }
+ 
+.modal-content {
+   background-color: #fefefe;
+   padding: 60%;
+   border: 1px solid #888;
+   border-radius: 5px;
+}
+#card{
+   display: flex;
+   align-self: center;
+   justify-self: center;
+}
+
+.link-text {
+   color: #0d62a7;
+   padding: 2px;
+   font-family: 'Pokemon Solid', sans-serif;
+   text-shadow: 2px 2px 0 #FFCB05, 2px -2px 0 #FFCB05, -2px 2px 0 #FFCB05, -2px -2px 0 #FFCB05, 2px 0px 0 #FFCB05, 0px 2px 0 #FFCB05, -2px 0px 0 #FFCB05, 0px -2px 0 #FFCB05;
+   font-size: 120%;
+   border: solid #0d62a7 1px;
+   background: #98fb9855;
+   text-decoration: none;
+}
+

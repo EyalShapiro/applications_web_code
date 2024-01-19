@@ -1,5 +1,4 @@
 export const err_style: object = {
-    display: "block",
     textAlign: "center",
     color: "orangered",
     margin: "2%",

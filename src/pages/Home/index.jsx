@@ -1,6 +1,5 @@
 import React from "react";
-import PokemonList from "./PokeList";
-
+import PokemonList from "../../Components/ListShowPoke/PokeList";
 export default function Home() {
 
   return (

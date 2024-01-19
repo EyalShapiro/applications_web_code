@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import Card from '../card/Card.tsx'
-import ApiFetch from "../../Api/ApiFetch.jsx";
-import './PokemonDetails.css'
-
+import ApiFetch from "../../Api/ApiFetch.ts";
+import './assets/PokemonDetails.css'
 async function NewData(input) {
    const data = await ApiFetch(input);
    const { id, species, sprites, types, abilities, stats } = data;
+
    const number = data.id;
    const name = species.name.toUpperCase();
    const gif =
@@ -48,13 +47,10 @@ function PokemonDetails() {
       fetchData();
    }, [id]);
 
-   const StyleLink = {
-      color: '#4DABF7', fontSize: '120%',
-      border: 'solid #4DABF7 ', background: '#98fb9855'
-   };
+
    return (
       <div className='PokemonDetails'>
-         <Link style={StyleLink} to="/">Back to Pokemon List</Link>
+         <Link className='link-text' to="/">Back to Pokemon List</Link>
           <div id='card'>
          {pokemonData &&<Card pokemon={pokemonData} />}
       </div></div>

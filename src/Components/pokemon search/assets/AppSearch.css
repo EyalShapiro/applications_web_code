@@ -10,10 +10,9 @@
 
 .PokemonApp {
   background-image: url("./backrond.png");
-  display: flex;
+  background-attachment: scroll, local;
+    display: flex;
   text-align: center !important;
-  justify-self: center !important;
-  align-self: center !important;
   margin: 1px;  
   /* overflow: auto !important; */
   box-sizing: border-box;
@@ -40,6 +39,14 @@
   border: #ecbd8b80 ridge 5px;
   background: #ecbd8b80;
   margin: 1%;
+  align-self: start;
+  border-radius: 6%;
+  padding:1% 2% 6%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5% 10%;
+  
   
 }
 
